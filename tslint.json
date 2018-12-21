@@ -1,0 +1,20 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "quotemark": false,
+    "object-literal-sort-keys": false,
+    "import-name": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "variable-name": false
+  },
+  "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"]
+}

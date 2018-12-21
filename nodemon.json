@@ -1,0 +1,14 @@
+{
+  "watch": [
+    "server/**/*.*",
+    "apollo/**/*.*",
+    "settings/**/*.*",
+    "util/**/*.*",
+    "static/**/*.*",
+    "graphql/**/*.*"
+  ],
+  "ext": "js,json,ts,tsx,graphql,gql",
+  "execMap": {
+    "ts": "ts-node --watch --traceResolution --pretty --project tsconfig.server.json  --compilerOptions '{\"module\":\"commonjs\"}'"
+  }
+}

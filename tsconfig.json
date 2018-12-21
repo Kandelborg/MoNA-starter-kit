@@ -1,0 +1,72 @@
+{
+  "include": [
+    "src",
+    "graphql",
+    "pages",
+    "settings",
+    "typescript",
+    "util",
+    "i18n" /* , "node_modules" */
+  ],
+  "exclude": [".git", ".vscode", "generated"],
+
+  "compilerOptions": {
+    "pretty": true,
+    "paths": { "*": ["typescript/*", "*"] },
+    /* Basic Options */
+    "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
+    "module": "esnext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018"
+    ] /* Specify library files to be included in the compilation. */,
+    "allowJs": true /* Allow javascript files to be compiled. */,
+    //  "checkJs": true /* Report errors in .js files. */,
+    "jsx": "preserve" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+
+    "removeComments": false /* Do not emit comments to output. */,
+
+    /* Strict Type-Checking Options */
+    "strict": true /* Enable all strict type-checking options. */,
+    "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
+    "strictNullChecks": true /* Enable strict null checks. */,
+    "strictFunctionTypes": true /* Enable strict checking of function types. */,
+    "strictPropertyInitialization": true /* Enable strict checking of property initialization in classes. */,
+    "noImplicitThis": true /* Raise error on 'this' expressions with an implied 'any' type. */,
+    "alwaysStrict": true /* Parse in strict mode and emit "use strict" for each source file. */,
+    "skipLibCheck": true,
+    /* Additional Checks */
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": "." /* Base directory to resolve non-absolute module names. */, // "types": [],                           /* Type declaration files to be included in compilation. */ // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    "rootDirs": [
+      "components",
+      "util",
+      "pages",
+      "src",
+      "settings",
+      "graphql",
+      "typescript"
+    ] /* Specify list of root directories to be used when resolving modules */,
+    "typeRoots": [
+      "typescript/*",
+      "node_modules/@types/*"
+    ] /* List of root folders whose combined content represe /**/,
+
+    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+
+    /* Experimental Options */
+    "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */
+  }
+}
