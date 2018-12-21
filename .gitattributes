@@ -1,3 +1,6 @@
+# Hey language detector! Ignore generated files.
+generated/* linguist-vendored
+
 
 # Common settings that generally should always be used with your language specific settings
 
