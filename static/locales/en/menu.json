@@ -1,0 +1,11 @@
+{
+  "homepage": "Home",
+  "blog": "Blog",
+  "entertainment": "Entertainment",
+  "projects": "Projects",
+
+  "profile": "Profile",
+  "myAccount": "My account",
+  "menuLabel": "Open menu",
+  "profileButtonLabel": "Profile button"
+}

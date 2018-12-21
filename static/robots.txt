@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /projects/*
+
+Sitemap: https://webpage.dk/sitemap.xml
