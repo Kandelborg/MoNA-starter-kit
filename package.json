@@ -105,7 +105,7 @@
     "react": "next",
     "react-apollo": "^2.3.3",
     "react-dom": "next",
-    "react-i18next": "^8.4.0",
+    "react-i18next": "^9.0.0",
     "react-jss": "^8.6.1",
     "rm": "^0.1.8",
     "sitemap": "^2.1.0",
