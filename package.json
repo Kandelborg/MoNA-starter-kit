@@ -96,7 +96,7 @@
     "lru-cache": "^5.1.1",
     "next": "^7.0.2",
     "next-ga": "^2.3.4",
-    "next-i18next": "^0.13.0",
+    "next-i18next": "^0.36.0",
     "nodemon": "^1.18.9",
     "numeral": "^2.0.6",
     "prettier-eslint": "^8.8.2",
