@@ -1,0 +1,29 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  "tslint.configFile": "tslint.json",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "files.autoSave": "afterDelay",
+
+  "typescriptHero.imports.insertSemicolons": false,
+  "typescript.suggest.autoImports": true,
+
+  "editor.formatOnSave": true,
+  "files.autoSaveDelay": 2500,
+
+  "typescript.validate.enable": true,
+  "typescript.format.enable": false,
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "tslint.suppressWhileTypeErrorsPresent": false,
+  "tslint.jsEnable": true,
+  "javascript.format.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact"],
+
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.requireConfig": true,
+  "prettier.trailingComma": "es5"
+}

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "checkJs": true,
+    "moduleResolution": "node"
+  },
+  "include": ["."],
+  "exclude": ["node_modules", ".circleci", ".next", ".vscode", "generated"]
+}

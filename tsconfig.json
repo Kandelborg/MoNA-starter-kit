@@ -1,0 +1,51 @@
+{
+  "exclude": [
+    "./next.config.js",
+    ".git",
+    ".vscode",
+    "generated",
+    ".next",
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "pretty": true,
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "es2015", "es2016", "es2017", "es2018"],
+    "allowJs": false,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["typescript/*"],
+      "@components/*": ["components/*"],
+      "@fields/*": ["components/HoC/Form/Fields/*"],
+      "@form/*": ["components/Hoc/Form/"],
+      "@graphql/*": ["graphql/*"],
+      "@i18n": ["i18n"],
+      "@i18n/*": ["i18n/*"],
+      "@static/*": ["static/*"],
+      "@pages/*": ["pages/*"],
+      "@server/*": ["server/*"],
+      "@util/*": ["util/*"]
+    },
+    "typeRoots": ["typescript", "node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true
+  }
+}

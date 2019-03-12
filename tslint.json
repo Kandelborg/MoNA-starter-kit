@@ -1,0 +1,58 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-react",
+    "tslint-react-a11y",
+    "tslint-eslint-rules",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "quotemark": false,
+    "object-literal-sort-keys": true,
+    "import-name": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "jsx-boolean-value": false,
+    "jsx-no-lambda": false,
+    "prefer-array-literal": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "never",
+          "arrays": "never",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        },
+        "esSpecCompliant": true
+      }
+    ],
+    "jsx-use-translation-function": false,
+    "jsx-key": true,
+    "no-extra-semi": true,
+    "semicolon": [true, "never"],
+    "curly": [true, "ignore-same-line"],
+    /* "valid-jsdoc": true, */
+    "no-regex-spaces": true,
+    "switch-default": true,
+    "ter-newline-after-var": true,
+    "newline-before-return": true,
+    "max-file-line-count": [true, 250],
+    "variable-name": false,
+    "interface-name": false
+    /*     "ter-max-len": [
+      true,
+      80,
+      {
+        "code": 80,
+        "tabWidth": 2,
+        "ignoreImports": true,
+        "ignoreUrls": true
+      }
+    ] */
+  },
+  "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"]
+}

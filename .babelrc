@@ -1,0 +1,74 @@
+{
+  "env": {
+    "development": {
+      "presets": ["next/babel", "@zeit/next-typescript/babel"],
+      "plugins": [
+        [
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ],
+        [
+          "@babel/plugin-proposal-class-properties",
+          {
+            "loose": true
+          }
+        ],
+        "@babel/plugin-proposal-export-default-from",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "@components": "./components",
+              "@fields": "./components/HoC/Form/Fields",
+              "@graphql": "./graphql",
+              "@i18n": "./i18n",
+              "@pages": "./pages",
+              "@src": "./src",
+              "@static": "./static",
+              "@util": "./util",
+              "@util/settings": "util/settings"
+            }
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": ["next/babel", "@zeit/next-typescript/babel"],
+      "plugins": [
+        [
+          "@babel/plugin-proposal-decorators",
+          {
+            "legacy": true
+          }
+        ],
+        [
+          "@babel/plugin-proposal-class-properties",
+          {
+            "loose": true
+          }
+        ],
+        "@babel/plugin-proposal-export-default-from",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "@components": "./components",
+              "@fields": "./components/HoC/Form/Fields",
+              "@graphql": "./graphql",
+              "@i18n": "./i18n",
+              "@pages": "./pages",
+              "@src": "./src",
+              "@static": "./static",
+              "@util": "./util",
+              "@util/settings": "util/settings"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
