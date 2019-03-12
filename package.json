@@ -117,7 +117,7 @@
     "@types/lodash": "^4.14.122",
     "@types/lru-cache": "^5.1.0",
     "@types/next": "^8.0.1",
-    "@types/node": "^10.12.29",
+    "@types/node": "^11.0.0",
     "@types/numeral": "latest",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
