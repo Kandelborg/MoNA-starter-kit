@@ -2,9 +2,9 @@
 
 > MoNA aka Material-UI (over) Next Apollo
 
-[![License: MIT](https://img.shields.io/github/license/MathiasKandelborg/next-apollo-mui-starter.svg?style=flat-square)](https://github.com/MathiasKandelborg/next-apollo-mui-starter/blob/master/LICENSE)
-[![Maintainability](https://api.codeclimate.com/v1/badges/9aede83e7d31974d0723/maintainability)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![License: MIT](https://img.shields.io/github/license/MathiasKandelborg/next-apollo-mui-starter.svg)](https://github.com/MathiasKandelborg/next-apollo-mui-starter/blob/master/LICENSE)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1c0bc2e9d5dcbe73efd3/maintainability)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 MoNA _tries_ to follow best practices, be flexible and use the greatest tech & libraries.
 
