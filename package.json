@@ -54,7 +54,13 @@
     "lint:js": "prettier-eslint --prettier-last --eslint-config-path .eslintrc.js --write \"{apollo,components,docs,graphql,i18n,pages,server,settings,typescript,util}/**/*.js*\"",
     "lint:ts": "tslint -p tsconfig.json --config tslint.json && prettier-tslint fix \"{apollo,components,docs,graphql,i18n,pages,server,settings,util}/**/*.ts*\"",
     "lint": "npm run lint:ts && npm run lint:js",
-    "semantic-release": "semantic-release -e release.config.js"
+    "semantic-release": "semantic-release -e release.config.js",
+    "cz": "npx git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/commitlint"
+    }
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -138,6 +144,7 @@
     "babel-eslint": "10.0.1",
     "babel-plugin-module-resolver": "3.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "commitlint": "^7.5.2",
     "commitlint-circle": "1.0.0",
     "copyfiles": "2.1.0",
     "eslint": "5.15.1",
