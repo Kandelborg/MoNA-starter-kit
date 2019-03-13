@@ -32,7 +32,7 @@ module.exports = withBundleAnalyzer(
             staticFileGlobsIgnorePatterns: [/\.next\//],
             navigateFallback: `${DOMAIN}`,
             //  skipWaiting: true,
-            cacheId: 'kandelborg-v1',
+            cacheId: 'mona-v1',
             runtimeCaching: [
               {
                 handler: 'networkFirst',
