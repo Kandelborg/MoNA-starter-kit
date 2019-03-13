@@ -1,2 +1,4 @@
 .git
 .next
+static/**/*.min.js
+static/**/*.js
