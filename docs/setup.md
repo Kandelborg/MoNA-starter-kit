@@ -44,17 +44,7 @@ Go the the [extensions document](/docs/vscode-extensions.md) for a list of exten
 
 Commands for installing extensions for the insiders edition are also stored in that document.
 
-1. Install the extensions via the install script
-
-> Make a bash script executable, then run it
-
-**NOTE:** _the script only installs extensions for VSCode, not the insiders edition_
-
-```bash
-# Make the script executable
-sudo chmod +x ./install-code-extensions.sh
-./install-code-extensions.sh
-```
+1. Install the extensions via the provided commands
 
 The settings in `/.vscode/settings.json` are all you need for a great developer experience.
 Make sure those settings are the ones in use.

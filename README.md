@@ -6,7 +6,9 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/1c0bc2e9d5dcbe73efd3/maintainability)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
+[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/MathiasKandelborg/MoNA-starter-kit.svg?logo=circleci)](https://circleci.com/gh/MathiasKandelborg/MoNA-starter-kit)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/issues)
 
 MoNA _tries_ to follow best practices, be flexible and use the greatest tech & libraries.
 
