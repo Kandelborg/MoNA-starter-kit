@@ -3,13 +3,13 @@
 ## Index
 
 - [Introduction](#Introduction)
-- [Index](Index)
+- [Index](#Index)
 - [What is MoNA](#What-is-MoNA)
 - [Documents index](#Documents)
 
 ## Getting started
 
-If you just want to get started go to the [setup document](/Setup.md) for the 'real deal'.
+If you just want to get started go to the [setup document](/docs/setup.md) for the 'real deal'.
 
 ## What is MoNA
 
