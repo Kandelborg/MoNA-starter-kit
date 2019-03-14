@@ -75,9 +75,9 @@ const FormLocaleSwitcher: FunctionComponent<{
             <Twemoji
               options={{
                 className: 'twemoji',
-                size: 16,
+                ext: '.svg',
                 folder: 'svg',
-                ext: '.svg'
+                size: 16
               }}>
               {createFlagByLng(lng)} {props.t(`languages:${lng}`)}
             </Twemoji>

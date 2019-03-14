@@ -3,6 +3,19 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import orange from '@material-ui/core/colors/orange'
 
 const MainTheme = createMuiTheme({
+  overrides: {
+    MuiCardHeader: {
+      action: {
+        margin: 0
+      }
+    },
+
+    MuiSelect: {
+      selectMenu: {
+        paddingLeft: 4
+      }
+    }
+  },
   palette: {
     /*  type: 'dark', */
     primary: {
@@ -22,18 +35,6 @@ const MainTheme = createMuiTheme({
       fontFamily: '""Roboto", "Helvetica", "Arial", sans-serif"'
     },
     useNextVariants: true
-  },
-  overrides: {
-    MuiCardHeader: {
-      action: {
-        margin: 0
-      }
-    },
-    MuiSelect: {
-      selectMenu: {
-        paddingLeft: 4
-      }
-    }
   }
 })
 

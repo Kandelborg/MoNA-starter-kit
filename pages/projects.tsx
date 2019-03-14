@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 
   h1: {
-    margin: theme.spacing.unit * 2,
-    fontSize: '3em'
+    fontSize: '3em',
+    margin: theme.spacing.unit * 2
   }
 }))
 
