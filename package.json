@@ -96,6 +96,7 @@
     "react-dom": "^16.8.3",
     "react-i18next": "^10.0.0",
     "react-jss": "^8.6.1",
+    "react-twemoji": "^0.1.0",
     "rm": "^0.1.8",
     "runtypes": "^3.1.2",
     "sitemap": "^2.1.0",

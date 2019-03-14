@@ -75,6 +75,13 @@ class App extends app<IAppProps> {
                 @font-face {
                   font-display: swap;
                 }
+                img.twemoji {
+                  height: 1em;
+                  width: 1em;
+                  margin: 0.01em 0.05em -0.1em 0.01em;
+                  vertical-align: -0.1em;
+                  font-size: 1.3em;
+                }
               `}
             </style>
 
