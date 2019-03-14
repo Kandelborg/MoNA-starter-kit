@@ -1,0 +1,12 @@
+{
+  "name": "Navn",
+  "slug": "Slug",
+  "place": "Sted",
+  "description": "Beskrivelse",
+  "published": "Offentliggør",
+  "password": "Kodeord",
+  "image": "Billede",
+  "image_plural": "Billeder",
+  "imageWithCount": "{{count}} billede",
+  "imageWithCount_plural": "{{count}} billeder"
+}

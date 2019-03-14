@@ -1,0 +1,13 @@
+{
+  "homepage": "Home",
+  "blog": "Blog",
+  "entertainment": "Entertainment",
+  "projects": "Projects",
+  "profile": "Profile",
+  "login": "Log in",
+  "logout": "Log out",
+  "createAcc": "Opret bruger",
+  "myAccount": "My account",
+  "menuLabel": "Open menu",
+  "profileButtonLabel": "Profile button"
+}

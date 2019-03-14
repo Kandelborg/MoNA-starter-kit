@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /blog/*
+Allow: /projects/*
+Allow: /entertainment/*
+
+Sitemap: https://exmample.com/sitemap.xml

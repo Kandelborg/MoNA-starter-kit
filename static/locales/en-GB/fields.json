@@ -1,0 +1,12 @@
+{
+  "name": "Name",
+  "slug": "Slug",
+  "place": "Place",
+  "description": "Description",
+  "published": "Published",
+  "password": "Password",
+  "image": "Image",
+  "image_plural": "Images",
+  "imageWithCount": "{{count}} image",
+  "imageWithCount_plural": "{{count}} images"
+}

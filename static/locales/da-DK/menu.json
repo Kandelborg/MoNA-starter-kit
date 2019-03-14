@@ -1,0 +1,13 @@
+{
+  "homepage": "Forside",
+  "blog": "Blog",
+  "entertainment": "Underholdning",
+  "projects": "Projekter",
+  "profile": "Profil",
+  "login": "Log ind",
+  "logout": "Log ud",
+  "createAcc": "Opret bruger",
+  "myAccount": "Min Konto",
+  "menuLabel": "Åbn menu",
+  "profileButtonLabel": "Profil knap"
+}
