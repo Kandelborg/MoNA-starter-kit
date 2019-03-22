@@ -124,7 +124,7 @@
     "@types/lodash": "4.14.123",
     "@types/lru-cache": "5.1.0",
     "@types/next": "8.0.3",
-    "@types/node": "10.14.2",
+    "@types/node": "10.14.3",
     "@types/numeral": "latest",
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
