@@ -2,13 +2,14 @@
 
 > MoNA aka Material-UI (over) Next Apollo
 
-[![License: MIT](https://img.shields.io/github/license/MathiasKandelborg/next-apollo-mui-starter.svg)](https://github.com/MathiasKandelborg/next-apollo-mui-starter/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/github/license/MathiasKandelborg/next-apollo-mui-starter.svg)](https://github.com/Kandelborg/next-apollo-mui-starter/blob/master/LICENSE)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/MathiasKandelborg/MoNA-starter-kit.svg?logo=circleci)](https://circleci.com/gh/MathiasKandelborg/MoNA-starter-kit)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
-[![Code Climate issues](https://img.shields.io/codeclimate/issues/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/issues)
+[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/Kandelborg/MoNA-starter-kit.svg?logo=circleci?cacheSeconds=300)](https://circleci.com/gh/Kandelborg/MoNA-starter-kit)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate?cacheSeconds=10)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate?cacheSeconds=10)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/issues)
 
 MoNA _tries_ to follow best practices, be flexible and use the greatest tech & libraries.
 
@@ -18,9 +19,10 @@ Everything is documented, automated, and as many practices as possible are follo
 
 ## Getting Started
 
+Go read [the documentation](https://kandelborg.github.io/Docs/)! Yes, you read correctly... This project has documentation, and a lot of it!
 Due to the nature of the project, a bit of initial configuring is needed to get started.
 
-For the best setup, go to the [Introduction document](/docs/introduction.md)
+For a proper setup, go to the [introduction document](/docs/introduction.md)
 
 ## Features
 
@@ -70,7 +72,7 @@ Here is the complete list of current features in MoNA:
 
 ## Missing
 
-- User dashboard
+- A proper user dashboard
 - I18n everything
 - CSP
 - XSS & CSRF prevention - <https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md>
