@@ -5,22 +5,6 @@
   "author": "Mathias Wøbbe",
   "license": "SEE LICENSE IN LICENSE",
   "readme": "README.md",
-  "keywords": [
-    "next.js",
-    "next",
-    "material-ui",
-    "mui",
-    "i18n",
-    "i18next",
-    "formik",
-    "starter",
-    "kit",
-    "starter-kit",
-    "boilerplate",
-    "project",
-    "tempalte",
-    "pwa"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/MathiasKandelborg/mona-starter-kit.git"
@@ -55,12 +39,7 @@
     "lint:ts": "tslint -p tsconfig.json --config tslint.json && prettier-tslint fix \"{apollo,components,docs,graphql,i18n,pages,server,settings,util}/**/*.ts*\"",
     "lint": "npm run lint:ts && npm run lint:js",
     "semantic-release": "semantic-release -e release.config.js",
-    "cz": "npx git-cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "cz": "git-cz"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -145,6 +124,7 @@
     "babel-eslint": "10.0.1",
     "babel-plugin-module-resolver": "3.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "commitizen": "^3.0.7",
     "commitlint": "7.5.2",
     "copyfiles": "2.1.0",
     "cz-conventional-changelog": "2.1.0",

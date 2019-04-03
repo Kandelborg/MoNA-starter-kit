@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'front-end',
+      name: 'website',
       script: '.next/server/production-server/server/index.js',
       broadcast_logs: true,
       env: {
