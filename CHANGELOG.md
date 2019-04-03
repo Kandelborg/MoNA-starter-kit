@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/MathiasKandelborg/mona-starter-kit/compare/v1.1.2...v1.2.0) (2019-04-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next-i18next to ^0.37.0 ([25b9e0b](https://github.com/MathiasKandelborg/mona-starter-kit/commit/25b9e0b))
+* Use the correct commit lint config ([00a59bd](https://github.com/MathiasKandelborg/mona-starter-kit/commit/00a59bd))
+
+
+### Features
+
+* **everything:** update files to reflect changes in KATS ([1be59fe](https://github.com/MathiasKandelborg/mona-starter-kit/commit/1be59fe))
+
 ## [1.1.2](https://github.com/MathiasKandelborg/mona-starter-kit/compare/v1.1.1...v1.1.2) (2019-03-14)
 
 
