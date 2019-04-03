@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const projectDelete = gql`
-  mutation ProjectDelete($where: ProjectWhereInput!) {
+  mutation ProjectDelete($where: ProjectWhereUniqueInput!) {
     projectDelete(where: $where) {
       id
     }

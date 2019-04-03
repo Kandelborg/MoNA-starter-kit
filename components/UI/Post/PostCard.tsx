@@ -165,7 +165,7 @@ const PostCard: FunctionComponent<IPostCardProps> = (props) => {
       <Link prefetch={true} href={`/blog/${slug}/`}>
         <CardContent className={classes.clickable}>
           <Typography component="p">
-            {isPublished ? displayedContent.description : 'No sneak peeks!'}
+            {isPublished ? displayedContent.text : 'No sneak peeks!'}
           </Typography>
         </CardContent>
       </Link>

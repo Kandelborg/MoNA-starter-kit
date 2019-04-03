@@ -11,10 +11,14 @@ export interface UserUpdateInput {
   email?: string
   name?: string
   password?: string
-  avatar?: {
-    id: string
-    publicId: string
-    src: string
+
+  profile: {
+    bio: string
+    avatar?: {
+      id: string
+      publicId: string
+      src: string
+    }
   }
 }
 
@@ -28,10 +32,14 @@ export interface User {
   email: string
   name: string
   role: UserRoleEnum
-  avatar?: {
-    id: string
-    publicId: string
-    src: string
+
+  profile: {
+    bio: string
+    avatar?: {
+      id: string
+      publicId: string
+      src: string
+    }
   }
   comments?: any
 }

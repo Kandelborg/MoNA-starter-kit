@@ -7,12 +7,12 @@ const projectCategoryCreate = gql`
     projectCategoryCreate(data: $projectCategory) {
       id
       slug
+      image
       contents {
         language {
           country
         }
         title
-        image
         imageAlt
         metaTitle
         metaDescription

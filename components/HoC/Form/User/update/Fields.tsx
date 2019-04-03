@@ -34,7 +34,7 @@ const UserUpdateFields: FunctionComponent<{
         <Field
           lpignore="true"
           name="avatar"
-          value={values.avatar}
+          value={values.profile.avatar}
           render={(renderCtx: { field: any; form: any }) => (
             <UpdateImageInputField
               {...renderCtx}

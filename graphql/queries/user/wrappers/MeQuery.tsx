@@ -22,11 +22,11 @@ class MeQuery extends React.PureComponent<IMeQueryProps> {
             id
           }}>
           {(client) => {
-            const { loading, error, data } = client
+            const { loading, /*  error, */ data } = client
 
-            if (error) return `Error! ${error.message}`
+            /* if (error) return `Error! ${error.message}` */
 
-            if (loading) return 'Loading...'
+            /* if (loading) return 'Loading...' */
 
             if (data && data.me && !loading) {
               const { me } = data

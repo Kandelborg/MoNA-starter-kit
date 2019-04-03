@@ -2,30 +2,35 @@ import gql from 'graphql-tag'
 
 const projectCategoryBySlug = gql`
   query ProjectCategoryBySlug($slug: String!) {
-    projectCategoryBySlug(where: { slug: $slug }) {
+    projectCategoryBySlug(slug: $slug) {
       id
       slug
+      image
       contents {
         id
         language {
           country
         }
         title
-        image
         imageAlt
         metaTitle
         metaDescription
       }
       projects {
         slug
+        tags {
+          contents {
+            title
+          }
+          color
+        }
         contents {
           id
           language {
             country
           }
           title
-          description
-          tags
+          text
           metaTitle
           metaDescription
           isActive

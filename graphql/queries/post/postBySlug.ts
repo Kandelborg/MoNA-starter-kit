@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 const postBySlug = gql`
-  query PostBySlug($slug: String) {
-    postBySlug(where: { slug: $slug }) {
+  query PostBySlug($slug: String!) {
+    postBySlug(slug: $slug) {
       id
       createdAt
       updatedAt
@@ -11,23 +11,31 @@ const postBySlug = gql`
         id
         name
         role
-        avatar {
-          id
-          src
-          publicId
+        profile {
+          avatar {
+            id
+            src
+            publicId
+          }
         }
       }
       imageSrc
       isPublished
+      tags {
+        contents {
+          title
+        }
+        color
+      }
       contents {
         id
         language {
           country
         }
         title
-        description
+        text
         imageAlt
-        tags
+
         metaTitle
         metaDescription
       }

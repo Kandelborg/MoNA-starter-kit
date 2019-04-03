@@ -9,11 +9,11 @@ export const checkLoggedIn = (apolloClient: ApolloClient<InMemoryCache>) =>
     query: gql`
       query GetUser {
         me {
-          avatar {
-            id
-            publicId
-            src
-          }
+          #    avatar {
+          #      id
+          #      publicId
+          #      src
+          #    }
           email
           id
           role

@@ -15,7 +15,7 @@ const UserCreate: FunctionComponent<{ closeModalFn: () => void }> = (props) => (
         onCompleted={(data) => {
           props.closeModalFn()
           // Store the token in cookie
-          document.cookie = cookie.serialize('token', data.userLogin.token, {
+          document.cookie = cookie.serialize('token', data.userLogin!.token, {
             maxAge: 1 * 24 * 60 * 60 // 30 days
           })
           /* Force a reload of all the current queries now that the user is

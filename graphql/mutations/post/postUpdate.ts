@@ -8,23 +8,31 @@ const postUpdate = gql`
         id
         name
         role
-        avatar {
-          id
-          src
-          publicId
+        profile {
+          avatar {
+            id
+            src
+            publicId
+          }
         }
       }
       slug
       imageSrc
+      tags {
+        contents {
+          title
+        }
+        color
+      }
       contents {
         id
         language {
           country
         }
         title
-        description
+        text
         imageAlt
-        tags
+
         metaTitle
         metaDescription
       }

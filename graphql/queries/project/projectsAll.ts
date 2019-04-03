@@ -1,14 +1,14 @@
 import gql from 'graphql-tag'
 
 const projectsAll = gql`
-  query ProjectsAll(
+  query Projects(
     $orderBy: ProjectOrderByInput
     $first: Int
     $last: Int
     $skip: Int
     $after: String
   ) {
-    projectsAll(
+    projects(
       orderBy: $orderBy
       first: $first
       last: $last
@@ -16,14 +16,19 @@ const projectsAll = gql`
       after: $after
     ) {
       id
+      tags {
+        contents {
+          title
+        }
+        color
+      }
       contents {
         id
         language {
           country
         }
         title
-        description
-        tags
+        text
         metaTitle
         metaDescription
         isActive

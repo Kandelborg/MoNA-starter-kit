@@ -22,13 +22,13 @@ const projectCategoriesAll = gql`
     ) {
       id
       slug
+      image
       contents {
         id
         language {
           country
         }
         title
-        image
         imageAlt
         metaTitle
         metaDescription
@@ -41,14 +41,20 @@ const projectCategoriesAll = gql`
         after: $projectAfter
       ) {
         slug
+        tags {
+          contents {
+            title
+          }
+          color
+        }
         contents {
           id
           language {
             country
           }
           title
-          description
-          tags
+          text
+
           metaTitle
           metaDescription
           isActive

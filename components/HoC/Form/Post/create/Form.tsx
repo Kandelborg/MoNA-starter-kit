@@ -18,7 +18,6 @@ function finishContentsObjForEachLng(arr: PostCreateInput) {
 
   for (let i = 0; i < contentsLength; i += 1) {
     newArr.push({
-      description: arr.contents[i].description,
       imageAlt: arr.contents[i].imageAlt,
       language: {
         connect: {
@@ -27,7 +26,7 @@ function finishContentsObjForEachLng(arr: PostCreateInput) {
       },
       metaDescription: arr.contents[i].metaDescription,
       metaTitle: arr.contents[i].metaTitle,
-      tags: arr.contents[i].tags,
+      text: arr.contents[i].text,
       title: arr.contents[i].title
     })
   }
@@ -37,16 +36,23 @@ function finishContentsObjForEachLng(arr: PostCreateInput) {
 
 const initialValues: PostCreateInput = {
   contents: createObjectsWithLng({
-    description: '',
     imageAlt: '',
     metaDescription: '',
     metaTitle: '',
-    tags: { set: [] },
+    text: '',
     title: ''
   }),
   imageSrc: '',
   isPublished: false,
-  slug: ''
+  slug: '',
+  tags: [
+    {
+      color: '',
+      contents: {
+        title: ''
+      }
+    }
+  ]
 }
 
 const CreatePost: FunctionComponent<{

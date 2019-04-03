@@ -8,12 +8,12 @@ const projectCategoryUpdate = gql`
     projectCategoryUpdate(data: $projectCategory, where: $where) {
       id
       slug
+      image
       contents {
         language {
           country
         }
         title
-        image
         imageAlt
         metaTitle
         metaDescription

@@ -114,9 +114,9 @@ const PostCreateFields: FunctionComponent<{
                     <Field
                       component={TextInputField}
                       label="Text"
-                      id={`contents.[${i}].description`}
-                      name={`contents.[${i}].description`}
-                      key={`contents.[${i}].description`}
+                      id={`contents.[${i}].text`}
+                      name={`contents.[${i}].text`}
+                      key={`contents.[${i}].text`}
                       required={true}
                       fullWidth={true}
                       multiline={true}

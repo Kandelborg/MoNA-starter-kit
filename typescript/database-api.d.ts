@@ -6,18 +6,10 @@
 // GraphQL query operation: GetUser
 // ====================================================
 
-export interface GetUser_me_avatar {
-  __typename: 'Avatar'
-  id: string
-  publicId: string
-  src: string
-}
-
 export interface GetUser_me {
   __typename: 'User'
-  avatar: GetUser_me_avatar | null
   email: string | null
-  id: string
+  id: any
   role: Role
   name: string
 }
@@ -34,19 +26,35 @@ export interface GetUser {
 // GraphQL mutation operation: PostCreate
 // ====================================================
 
-export interface PostCreate_postCreate_author_avatar {
+export interface PostCreate_postCreate_author_profile_avatar {
   __typename: 'Avatar'
-  id: string
-  src: string
-  publicId: string
+  id: any
+  src: string | null
+  publicId: string | null
+}
+
+export interface PostCreate_postCreate_author_profile {
+  __typename: 'Profile'
+  avatar: PostCreate_postCreate_author_profile_avatar
 }
 
 export interface PostCreate_postCreate_author {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   role: Role
-  avatar: PostCreate_postCreate_author_avatar | null
+  profile: PostCreate_postCreate_author_profile | null
+}
+
+export interface PostCreate_postCreate_tags_contents {
+  __typename: 'PostTagContent'
+  title: string
+}
+
+export interface PostCreate_postCreate_tags {
+  __typename: 'PostTag'
+  contents: PostCreate_postCreate_tags_contents
+  color: string
 }
 
 export interface PostCreate_postCreate_contents_language {
@@ -58,19 +66,19 @@ export interface PostCreate_postCreate_contents {
   __typename: 'PostContent'
   language: PostCreate_postCreate_contents_language
   title: string
-  description: string
+  text: string
   imageAlt: string
-  tags: string[]
   metaTitle: string | null
   metaDescription: string | null
 }
 
 export interface PostCreate_postCreate {
   __typename: 'Post'
-  id: string
+  id: any
   author: PostCreate_postCreate_author
   slug: string
   imageSrc: string
+  tags: PostCreate_postCreate_tags[] | null
   contents: PostCreate_postCreate_contents[] | null
   isPublished: boolean
 }
@@ -93,15 +101,15 @@ export interface PostCreateVariables {
 
 export interface postDelete_postDelete {
   __typename: 'Post'
-  id: string
+  id: any
 }
 
 export interface postDelete {
-  postDelete: postDelete_postDelete
+  postDelete: postDelete_postDelete | null
 }
 
 export interface postDeleteVariables {
-  where: PostWhereInput
+  where: PostWhereUniqueInput
 }
 
 /* tslint:disable */
@@ -112,19 +120,35 @@ export interface postDeleteVariables {
 // GraphQL mutation operation: PostUpdate
 // ====================================================
 
-export interface PostUpdate_postUpdate_author_avatar {
+export interface PostUpdate_postUpdate_author_profile_avatar {
   __typename: 'Avatar'
-  id: string
-  src: string
-  publicId: string
+  id: any
+  src: string | null
+  publicId: string | null
+}
+
+export interface PostUpdate_postUpdate_author_profile {
+  __typename: 'Profile'
+  avatar: PostUpdate_postUpdate_author_profile_avatar
 }
 
 export interface PostUpdate_postUpdate_author {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   role: Role
-  avatar: PostUpdate_postUpdate_author_avatar | null
+  profile: PostUpdate_postUpdate_author_profile | null
+}
+
+export interface PostUpdate_postUpdate_tags_contents {
+  __typename: 'PostTagContent'
+  title: string
+}
+
+export interface PostUpdate_postUpdate_tags {
+  __typename: 'PostTag'
+  contents: PostUpdate_postUpdate_tags_contents
+  color: string
 }
 
 export interface PostUpdate_postUpdate_contents_language {
@@ -134,28 +158,28 @@ export interface PostUpdate_postUpdate_contents_language {
 
 export interface PostUpdate_postUpdate_contents {
   __typename: 'PostContent'
-  id: string
+  id: any
   language: PostUpdate_postUpdate_contents_language
   title: string
-  description: string
+  text: string
   imageAlt: string
-  tags: string[]
   metaTitle: string | null
   metaDescription: string | null
 }
 
 export interface PostUpdate_postUpdate {
   __typename: 'Post'
-  id: string
+  id: any
   author: PostUpdate_postUpdate_author
   slug: string
   imageSrc: string
+  tags: PostUpdate_postUpdate_tags[] | null
   contents: PostUpdate_postUpdate_contents[] | null
   isPublished: boolean
 }
 
 export interface PostUpdate {
-  postUpdate: PostUpdate_postUpdate
+  postUpdate: PostUpdate_postUpdate | null
 }
 
 export interface PostUpdateVariables {
@@ -180,7 +204,6 @@ export interface projectCategoryCreate_projectCategoryCreate_contents {
   __typename: 'ProjectCategoryContent'
   language: projectCategoryCreate_projectCategoryCreate_contents_language
   title: string
-  image: string
   imageAlt: string
   metaTitle: string | null
   metaDescription: string | null
@@ -188,8 +211,9 @@ export interface projectCategoryCreate_projectCategoryCreate_contents {
 
 export interface projectCategoryCreate_projectCategoryCreate {
   __typename: 'ProjectCategory'
-  id: string
+  id: any
   slug: string
+  image: string
   contents: projectCategoryCreate_projectCategoryCreate_contents[] | null
 }
 
@@ -211,15 +235,15 @@ export interface projectCategoryCreateVariables {
 
 export interface projectCategoryDelete_projectCategoryDelete {
   __typename: 'ProjectCategory'
-  id: string
+  id: any
 }
 
 export interface projectCategoryDelete {
-  projectCategoryDelete: projectCategoryDelete_projectCategoryDelete
+  projectCategoryDelete: projectCategoryDelete_projectCategoryDelete | null
 }
 
 export interface projectCategoryDeleteVariables {
-  where: ProjectCategoryWhereInput
+  where: ProjectCategoryWhereUniqueInput
 }
 
 /* tslint:disable */
@@ -239,7 +263,6 @@ export interface ProjectCategoryUpdate_projectCategoryUpdate_contents {
   __typename: 'ProjectCategoryContent'
   language: ProjectCategoryUpdate_projectCategoryUpdate_contents_language
   title: string
-  image: string
   imageAlt: string
   metaTitle: string | null
   metaDescription: string | null
@@ -247,13 +270,14 @@ export interface ProjectCategoryUpdate_projectCategoryUpdate_contents {
 
 export interface ProjectCategoryUpdate_projectCategoryUpdate {
   __typename: 'ProjectCategory'
-  id: string
+  id: any
   slug: string
+  image: string
   contents: ProjectCategoryUpdate_projectCategoryUpdate_contents[] | null
 }
 
 export interface ProjectCategoryUpdate {
-  projectCategoryUpdate: ProjectCategoryUpdate_projectCategoryUpdate
+  projectCategoryUpdate: ProjectCategoryUpdate_projectCategoryUpdate | null
 }
 
 export interface ProjectCategoryUpdateVariables {
@@ -292,6 +316,17 @@ export interface ProjectCreate_projectCreate_album {
   images: ProjectCreate_projectCreate_album_images[] | null
 }
 
+export interface ProjectCreate_projectCreate_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectCreate_projectCreate_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectCreate_projectCreate_tags_contents
+  color: string | null
+}
+
 export interface ProjectCreate_projectCreate_contents_language {
   __typename: 'ProjectLng'
   country: string
@@ -301,8 +336,7 @@ export interface ProjectCreate_projectCreate_contents {
   __typename: 'ProjectContent'
   language: ProjectCreate_projectCreate_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -310,9 +344,10 @@ export interface ProjectCreate_projectCreate_contents {
 
 export interface ProjectCreate_projectCreate {
   __typename: 'Project'
-  id: string
+  id: any
   slug: string
   album: ProjectCreate_projectCreate_album
+  tags: ProjectCreate_projectCreate_tags[] | null
   contents: ProjectCreate_projectCreate_contents[] | null
 }
 
@@ -334,15 +369,15 @@ export interface ProjectCreateVariables {
 
 export interface ProjectDelete_projectDelete {
   __typename: 'Project'
-  id: string
+  id: any
 }
 
 export interface ProjectDelete {
-  projectDelete: ProjectDelete_projectDelete
+  projectDelete: ProjectDelete_projectDelete | null
 }
 
 export interface ProjectDeleteVariables {
-  where: ProjectWhereInput
+  where: ProjectWhereUniqueInput
 }
 
 /* tslint:disable */
@@ -376,6 +411,17 @@ export interface ProjectUpdate_projectUpdate_album {
   images: ProjectUpdate_projectUpdate_album_images[] | null
 }
 
+export interface ProjectUpdate_projectUpdate_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectUpdate_projectUpdate_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectUpdate_projectUpdate_tags_contents
+  color: string | null
+}
+
 export interface ProjectUpdate_projectUpdate_contents_language {
   __typename: 'ProjectLng'
   country: string
@@ -385,8 +431,7 @@ export interface ProjectUpdate_projectUpdate_contents {
   __typename: 'ProjectContent'
   language: ProjectUpdate_projectUpdate_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -394,14 +439,15 @@ export interface ProjectUpdate_projectUpdate_contents {
 
 export interface ProjectUpdate_projectUpdate {
   __typename: 'Project'
-  id: string
+  id: any
   slug: string
   album: ProjectUpdate_projectUpdate_album
+  tags: ProjectUpdate_projectUpdate_tags[] | null
   contents: ProjectUpdate_projectUpdate_contents[] | null
 }
 
 export interface ProjectUpdate {
-  projectUpdate: ProjectUpdate_projectUpdate
+  projectUpdate: ProjectUpdate_projectUpdate | null
 }
 
 export interface ProjectUpdateVariables {
@@ -419,7 +465,7 @@ export interface ProjectUpdateVariables {
 
 export interface UserCreate_userCreate_user {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   email: string | null
 }
@@ -431,7 +477,7 @@ export interface UserCreate_userCreate {
 
 export interface UserCreate_userLogin_user {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   email: string | null
 }
@@ -443,7 +489,7 @@ export interface UserCreate_userLogin {
 }
 
 export interface UserCreate {
-  userCreate: UserCreate_userCreate
+  userCreate: UserCreate_userCreate | null
   userLogin: UserCreate_userLogin
 }
 
@@ -463,11 +509,11 @@ export interface UserCreateVariables {
 
 export interface UserDelete_userDelete {
   __typename: 'User'
-  id: string
+  id: any
 }
 
 export interface UserDelete {
-  userDelete: UserDelete_userDelete
+  userDelete: UserDelete_userDelete | null
 }
 
 export interface UserDeleteVariables {
@@ -484,7 +530,7 @@ export interface UserDeleteVariables {
 
 export interface UserLogin_userLogin_user {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   email: string | null
 }
@@ -512,28 +558,33 @@ export interface UserLoginVariables {
 // GraphQL mutation operation: UserUpdate
 // ====================================================
 
-export interface UserUpdate_userUpdate_avatar {
+export interface UserUpdate_userUpdate_profile_avatar {
   __typename: 'Avatar'
-  id: string
-  publicId: string
-  src: string
+  id: any
+  publicId: string | null
+  src: string | null
+}
+
+export interface UserUpdate_userUpdate_profile {
+  __typename: 'Profile'
+  avatar: UserUpdate_userUpdate_profile_avatar
 }
 
 export interface UserUpdate_userUpdate {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   email: string | null
-  avatar: UserUpdate_userUpdate_avatar | null
+  profile: UserUpdate_userUpdate_profile | null
 }
 
 export interface UserUpdate {
-  userUpdate: UserUpdate_userUpdate
+  userUpdate: UserUpdate_userUpdate | null
 }
 
 export interface UserUpdateVariables {
   user: UserUpdateInput
-  where: UserWhereInput
+  where: UserWhereUniqueInput
 }
 
 /* tslint:disable */
@@ -544,19 +595,35 @@ export interface UserUpdateVariables {
 // GraphQL query operation: PostBySlug
 // ====================================================
 
-export interface PostBySlug_postBySlug_author_avatar {
+export interface PostBySlug_postBySlug_author_profile_avatar {
   __typename: 'Avatar'
-  id: string
-  src: string
-  publicId: string
+  id: any
+  src: string | null
+  publicId: string | null
+}
+
+export interface PostBySlug_postBySlug_author_profile {
+  __typename: 'Profile'
+  avatar: PostBySlug_postBySlug_author_profile_avatar
 }
 
 export interface PostBySlug_postBySlug_author {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   role: Role
-  avatar: PostBySlug_postBySlug_author_avatar | null
+  profile: PostBySlug_postBySlug_author_profile | null
+}
+
+export interface PostBySlug_postBySlug_tags_contents {
+  __typename: 'PostTagContent'
+  title: string
+}
+
+export interface PostBySlug_postBySlug_tags {
+  __typename: 'PostTag'
+  contents: PostBySlug_postBySlug_tags_contents
+  color: string
 }
 
 export interface PostBySlug_postBySlug_contents_language {
@@ -566,25 +633,25 @@ export interface PostBySlug_postBySlug_contents_language {
 
 export interface PostBySlug_postBySlug_contents {
   __typename: 'PostContent'
-  id: string
+  id: any
   language: PostBySlug_postBySlug_contents_language
   title: string
-  description: string
+  text: string
   imageAlt: string
-  tags: string[]
   metaTitle: string | null
   metaDescription: string | null
 }
 
 export interface PostBySlug_postBySlug {
   __typename: 'Post'
-  id: string
+  id: any
   createdAt: any
   updatedAt: any
   slug: string
   author: PostBySlug_postBySlug_author
   imageSrc: string
   isPublished: boolean
+  tags: PostBySlug_postBySlug_tags[] | null
   contents: PostBySlug_postBySlug_contents[] | null
 }
 
@@ -593,7 +660,7 @@ export interface PostBySlug {
 }
 
 export interface PostBySlugVariables {
-  slug?: string | null
+  slug: string
 }
 
 /* tslint:disable */
@@ -604,19 +671,22 @@ export interface PostBySlugVariables {
 // GraphQL query operation: PostsByIsPublished
 // ====================================================
 
-export interface PostsByIsPublished_postsByIsPublished_author_avatar {
-  __typename: 'Avatar'
-  id: string
-  src: string
-  publicId: string
-}
-
 export interface PostsByIsPublished_postsByIsPublished_author {
   __typename: 'User'
-  id: string
+  id: any
   name: string
   role: Role
-  avatar: PostsByIsPublished_postsByIsPublished_author_avatar | null
+}
+
+export interface PostsByIsPublished_postsByIsPublished_tags_contents {
+  __typename: 'PostTagContent'
+  title: string
+}
+
+export interface PostsByIsPublished_postsByIsPublished_tags {
+  __typename: 'PostTag'
+  contents: PostsByIsPublished_postsByIsPublished_tags_contents
+  color: string
 }
 
 export interface PostsByIsPublished_postsByIsPublished_contents_language {
@@ -626,39 +696,40 @@ export interface PostsByIsPublished_postsByIsPublished_contents_language {
 
 export interface PostsByIsPublished_postsByIsPublished_contents {
   __typename: 'PostContent'
-  id: string
+  id: any
   language: PostsByIsPublished_postsByIsPublished_contents_language
   title: string
-  description: string
+  text: string
   imageAlt: string
-  tags: string[]
   metaTitle: string | null
   metaDescription: string | null
 }
 
 export interface PostsByIsPublished_postsByIsPublished {
   __typename: 'Post'
-  id: string
+  id: any
   createdAt: any
   updatedAt: any
   slug: string
   author: PostsByIsPublished_postsByIsPublished_author
   imageSrc: string
   isPublished: boolean
+  tags: PostsByIsPublished_postsByIsPublished_tags[] | null
   contents: PostsByIsPublished_postsByIsPublished_contents[] | null
 }
 
 export interface PostsByIsPublished {
-  postsByIsPublished: PostsByIsPublished_postsByIsPublished[]
+  postsByIsPublished: PostsByIsPublished_postsByIsPublished[] | null
 }
 
 export interface PostsByIsPublishedVariables {
-  isPublished?: boolean | null
+  isPublished: boolean
   orderBy?: PostOrderByInput | null
   first?: number | null
   last?: number | null
   skip?: number | null
   after?: string | null
+  before?: string | null
 }
 
 /* tslint:disable */
@@ -676,13 +747,23 @@ export interface ProjectCategoriesAll_projectCategoriesAll_contents_language {
 
 export interface ProjectCategoriesAll_projectCategoriesAll_contents {
   __typename: 'ProjectCategoryContent'
-  id: string
+  id: any
   language: ProjectCategoriesAll_projectCategoriesAll_contents_language
   title: string
-  image: string
   imageAlt: string
   metaTitle: string | null
   metaDescription: string | null
+}
+
+export interface ProjectCategoriesAll_projectCategoriesAll_projects_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectCategoriesAll_projectCategoriesAll_projects_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectCategoriesAll_projectCategoriesAll_projects_tags_contents
+  color: string | null
 }
 
 export interface ProjectCategoriesAll_projectCategoriesAll_projects_contents_language {
@@ -692,11 +773,10 @@ export interface ProjectCategoriesAll_projectCategoriesAll_projects_contents_lan
 
 export interface ProjectCategoriesAll_projectCategoriesAll_projects_contents {
   __typename: 'ProjectContent'
-  id: string
+  id: any
   language: ProjectCategoriesAll_projectCategoriesAll_projects_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -705,19 +785,21 @@ export interface ProjectCategoriesAll_projectCategoriesAll_projects_contents {
 export interface ProjectCategoriesAll_projectCategoriesAll_projects {
   __typename: 'Project'
   slug: string
+  tags: ProjectCategoriesAll_projectCategoriesAll_projects_tags[] | null
   contents: ProjectCategoriesAll_projectCategoriesAll_projects_contents[] | null
 }
 
 export interface ProjectCategoriesAll_projectCategoriesAll {
   __typename: 'ProjectCategory'
-  id: string
+  id: any
   slug: string
+  image: string
   contents: ProjectCategoriesAll_projectCategoriesAll_contents[] | null
   projects: ProjectCategoriesAll_projectCategoriesAll_projects[] | null
 }
 
 export interface ProjectCategoriesAll {
-  projectCategoriesAll: (ProjectCategoriesAll_projectCategoriesAll | null)[]
+  projectCategoriesAll: ProjectCategoriesAll_projectCategoriesAll[]
 }
 
 export interface ProjectCategoriesAllVariables {
@@ -748,13 +830,23 @@ export interface ProjectCategoryById_projectCategoryById_contents_language {
 
 export interface ProjectCategoryById_projectCategoryById_contents {
   __typename: 'ProjectCategoryContent'
-  id: string
+  id: any
   language: ProjectCategoryById_projectCategoryById_contents_language
   title: string
-  image: string
   imageAlt: string
   metaTitle: string | null
   metaDescription: string | null
+}
+
+export interface ProjectCategoryById_projectCategoryById_projects_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectCategoryById_projectCategoryById_projects_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectCategoryById_projectCategoryById_projects_tags_contents
+  color: string | null
 }
 
 export interface ProjectCategoryById_projectCategoryById_projects_contents_language {
@@ -764,11 +856,10 @@ export interface ProjectCategoryById_projectCategoryById_projects_contents_langu
 
 export interface ProjectCategoryById_projectCategoryById_projects_contents {
   __typename: 'ProjectContent'
-  id: string
+  id: any
   language: ProjectCategoryById_projectCategoryById_projects_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -777,13 +868,15 @@ export interface ProjectCategoryById_projectCategoryById_projects_contents {
 export interface ProjectCategoryById_projectCategoryById_projects {
   __typename: 'Project'
   slug: string
+  tags: ProjectCategoryById_projectCategoryById_projects_tags[] | null
   contents: ProjectCategoryById_projectCategoryById_projects_contents[] | null
 }
 
 export interface ProjectCategoryById_projectCategoryById {
   __typename: 'ProjectCategory'
-  id: string
+  id: any
   slug: string
+  image: string
   contents: ProjectCategoryById_projectCategoryById_contents[] | null
   projects: ProjectCategoryById_projectCategoryById_projects[] | null
 }
@@ -811,13 +904,23 @@ export interface ProjectCategoryBySlug_projectCategoryBySlug_contents_language {
 
 export interface ProjectCategoryBySlug_projectCategoryBySlug_contents {
   __typename: 'ProjectCategoryContent'
-  id: string
+  id: any
   language: ProjectCategoryBySlug_projectCategoryBySlug_contents_language
   title: string
-  image: string
   imageAlt: string
   metaTitle: string | null
   metaDescription: string | null
+}
+
+export interface ProjectCategoryBySlug_projectCategoryBySlug_projects_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectCategoryBySlug_projectCategoryBySlug_projects_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectCategoryBySlug_projectCategoryBySlug_projects_tags_contents
+  color: string | null
 }
 
 export interface ProjectCategoryBySlug_projectCategoryBySlug_projects_contents_language {
@@ -827,11 +930,10 @@ export interface ProjectCategoryBySlug_projectCategoryBySlug_projects_contents_l
 
 export interface ProjectCategoryBySlug_projectCategoryBySlug_projects_contents {
   __typename: 'ProjectContent'
-  id: string
+  id: any
   language: ProjectCategoryBySlug_projectCategoryBySlug_projects_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -840,6 +942,7 @@ export interface ProjectCategoryBySlug_projectCategoryBySlug_projects_contents {
 export interface ProjectCategoryBySlug_projectCategoryBySlug_projects {
   __typename: 'Project'
   slug: string
+  tags: ProjectCategoryBySlug_projectCategoryBySlug_projects_tags[] | null
   contents:
     | ProjectCategoryBySlug_projectCategoryBySlug_projects_contents[]
     | null
@@ -847,8 +950,9 @@ export interface ProjectCategoryBySlug_projectCategoryBySlug_projects {
 
 export interface ProjectCategoryBySlug_projectCategoryBySlug {
   __typename: 'ProjectCategory'
-  id: string
+  id: any
   slug: string
+  image: string
   contents: ProjectCategoryBySlug_projectCategoryBySlug_contents[] | null
   projects: ProjectCategoryBySlug_projectCategoryBySlug_projects[] | null
 }
@@ -869,6 +973,17 @@ export interface ProjectCategoryBySlugVariables {
 // GraphQL query operation: ProjectById
 // ====================================================
 
+export interface ProjectById_projectById_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectById_projectById_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectById_projectById_tags_contents
+  color: string | null
+}
+
 export interface ProjectById_projectById_contents_language {
   __typename: 'ProjectLng'
   country: string
@@ -876,11 +991,10 @@ export interface ProjectById_projectById_contents_language {
 
 export interface ProjectById_projectById_contents {
   __typename: 'ProjectContent'
-  id: string
+  id: any
   language: ProjectById_projectById_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -888,7 +1002,8 @@ export interface ProjectById_projectById_contents {
 
 export interface ProjectById_projectById {
   __typename: 'Project'
-  id: string
+  id: any
+  tags: ProjectById_projectById_tags[] | null
   contents: ProjectById_projectById_contents[] | null
 }
 
@@ -908,6 +1023,17 @@ export interface ProjectByIdVariables {
 // GraphQL query operation: ProjectBySlug
 // ====================================================
 
+export interface ProjectBySlug_projectBySlug_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface ProjectBySlug_projectBySlug_tags {
+  __typename: 'ProjectTag'
+  contents: ProjectBySlug_projectBySlug_tags_contents
+  color: string | null
+}
+
 export interface ProjectBySlug_projectBySlug_contents_language {
   __typename: 'ProjectLng'
   country: string
@@ -915,11 +1041,10 @@ export interface ProjectBySlug_projectBySlug_contents_language {
 
 export interface ProjectBySlug_projectBySlug_contents {
   __typename: 'ProjectContent'
-  id: string
+  id: any
   language: ProjectBySlug_projectBySlug_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
@@ -928,6 +1053,7 @@ export interface ProjectBySlug_projectBySlug_contents {
 export interface ProjectBySlug_projectBySlug {
   __typename: 'Project'
   slug: string
+  tags: ProjectBySlug_projectBySlug_tags[] | null
   contents: ProjectBySlug_projectBySlug_contents[] | null
 }
 
@@ -944,37 +1070,48 @@ export interface ProjectBySlugVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: ProjectsAll
+// GraphQL query operation: Projects
 // ====================================================
 
-export interface ProjectsAll_projectsAll_contents_language {
+export interface Projects_projects_tags_contents {
+  __typename: 'ProjectTagContent'
+  title: string | null
+}
+
+export interface Projects_projects_tags {
+  __typename: 'ProjectTag'
+  contents: Projects_projects_tags_contents
+  color: string | null
+}
+
+export interface Projects_projects_contents_language {
   __typename: 'ProjectLng'
   country: string
 }
 
-export interface ProjectsAll_projectsAll_contents {
+export interface Projects_projects_contents {
   __typename: 'ProjectContent'
-  id: string
-  language: ProjectsAll_projectsAll_contents_language
+  id: any
+  language: Projects_projects_contents_language
   title: string
-  description: string
-  tags: string[]
+  text: string
   metaTitle: string | null
   metaDescription: string | null
   isActive: boolean
 }
 
-export interface ProjectsAll_projectsAll {
+export interface Projects_projects {
   __typename: 'Project'
-  id: string
-  contents: ProjectsAll_projectsAll_contents[] | null
+  id: any
+  tags: Projects_projects_tags[] | null
+  contents: Projects_projects_contents[] | null
 }
 
-export interface ProjectsAll {
-  projectsAll: (ProjectsAll_projectsAll | null)[]
+export interface Projects {
+  projects: Projects_projects[]
 }
 
-export interface ProjectsAllVariables {
+export interface ProjectsVariables {
   orderBy?: ProjectOrderByInput | null
   first?: number | null
   last?: number | null
@@ -990,17 +1127,23 @@ export interface ProjectsAllVariables {
 // GraphQL query operation: Me
 // ====================================================
 
-export interface Me_me_avatar {
+export interface Me_me_profile_avatar {
   __typename: 'Avatar'
-  id: string
-  publicId: string
-  src: string
+  id: any
+  publicId: string | null
+  src: string | null
+}
+
+export interface Me_me_profile {
+  __typename: 'Profile'
+  bio: string
+  avatar: Me_me_profile_avatar
 }
 
 export interface Me_me {
   __typename: 'User'
-  id: string
-  avatar: Me_me_avatar | null
+  id: any
+  profile: Me_me_profile | null
   role: Role
   name: string
   email: string | null
@@ -1027,6 +1170,8 @@ export enum PostOrderByInput {
   imageSrc_DESC = 'imageSrc_DESC',
   isPublished_ASC = 'isPublished_ASC',
   isPublished_DESC = 'isPublished_DESC',
+  likes_ASC = 'likes_ASC',
+  likes_DESC = 'likes_DESC',
   slug_ASC = 'slug_ASC',
   slug_DESC = 'slug_DESC',
   updatedAt_ASC = 'updatedAt_ASC',
@@ -1038,6 +1183,8 @@ export enum ProjectCategoryOrderByInput {
   createdAt_DESC = 'createdAt_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
+  image_ASC = 'image_ASC',
+  image_DESC = 'image_DESC',
   slug_ASC = 'slug_ASC',
   slug_DESC = 'slug_DESC',
   updatedAt_ASC = 'updatedAt_ASC',
@@ -1062,8 +1209,8 @@ export enum Role {
 }
 
 export interface AvatarCreateInput {
-  publicId: string
-  src: string
+  publicId?: string | null
+  src?: string | null
 }
 
 export interface AvatarCreateOneInput {
@@ -1076,13 +1223,11 @@ export interface AvatarUpdateDataInput {
   src?: string | null
 }
 
-export interface AvatarUpdateOneInput {
+export interface AvatarUpdateOneRequiredInput {
   create?: AvatarCreateInput | null
-  connect?: AvatarWhereUniqueInput | null
-  disconnect?: boolean | null
-  delete?: boolean | null
   update?: AvatarUpdateDataInput | null
   upsert?: AvatarUpsertNestedInput | null
+  connect?: AvatarWhereUniqueInput | null
 }
 
 export interface AvatarUpsertNestedInput {
@@ -1090,72 +1235,8 @@ export interface AvatarUpsertNestedInput {
   create: AvatarCreateInput
 }
 
-export interface AvatarWhereInput {
-  AND?: AvatarWhereInput[] | null
-  OR?: AvatarWhereInput[] | null
-  NOT?: AvatarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  publicId?: string | null
-  publicId_not?: string | null
-  publicId_in?: string[] | null
-  publicId_not_in?: string[] | null
-  publicId_lt?: string | null
-  publicId_lte?: string | null
-  publicId_gt?: string | null
-  publicId_gte?: string | null
-  publicId_contains?: string | null
-  publicId_not_contains?: string | null
-  publicId_starts_with?: string | null
-  publicId_not_starts_with?: string | null
-  publicId_ends_with?: string | null
-  publicId_not_ends_with?: string | null
-  src?: string | null
-  src_not?: string | null
-  src_in?: string[] | null
-  src_not_in?: string[] | null
-  src_lt?: string | null
-  src_lte?: string | null
-  src_gt?: string | null
-  src_gte?: string | null
-  src_contains?: string | null
-  src_not_contains?: string | null
-  src_starts_with?: string | null
-  src_not_starts_with?: string | null
-  src_ends_with?: string | null
-  src_not_ends_with?: string | null
-}
-
 export interface AvatarWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface CommentCreateManyWithoutAuthorInput {
@@ -1177,23 +1258,20 @@ export interface CommentCreateWithoutPostInput {
 }
 
 export interface CommentScalarWhereInput {
-  AND?: CommentScalarWhereInput[] | null
-  OR?: CommentScalarWhereInput[] | null
-  NOT?: CommentScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -1210,26 +1288,31 @@ export interface CommentScalarWhereInput {
   updatedAt_lte?: any | null
   updatedAt_gt?: any | null
   updatedAt_gte?: any | null
+  AND?: CommentScalarWhereInput[] | null
+  OR?: CommentScalarWhereInput[] | null
+  NOT?: CommentScalarWhereInput[] | null
 }
 
 export interface CommentUpdateManyWithoutAuthorInput {
   create?: CommentCreateWithoutAuthorInput[] | null
-  connect?: CommentWhereUniqueInput[] | null
-  disconnect?: CommentWhereUniqueInput[] | null
   delete?: CommentWhereUniqueInput[] | null
+  connect?: CommentWhereUniqueInput[] | null
+  set?: CommentWhereUniqueInput[] | null
+  disconnect?: CommentWhereUniqueInput[] | null
   update?: CommentUpdateWithWhereUniqueWithoutAuthorInput[] | null
-  deleteMany?: CommentScalarWhereInput[] | null
   upsert?: CommentUpsertWithWhereUniqueWithoutAuthorInput[] | null
+  deleteMany?: CommentScalarWhereInput[] | null
 }
 
 export interface CommentUpdateManyWithoutPostInput {
   create?: CommentCreateWithoutPostInput[] | null
-  connect?: CommentWhereUniqueInput[] | null
-  disconnect?: CommentWhereUniqueInput[] | null
   delete?: CommentWhereUniqueInput[] | null
+  connect?: CommentWhereUniqueInput[] | null
+  set?: CommentWhereUniqueInput[] | null
+  disconnect?: CommentWhereUniqueInput[] | null
   update?: CommentUpdateWithWhereUniqueWithoutPostInput[] | null
-  deleteMany?: CommentScalarWhereInput[] | null
   upsert?: CommentUpsertWithWhereUniqueWithoutPostInput[] | null
+  deleteMany?: CommentScalarWhereInput[] | null
 }
 
 export interface CommentUpdateWithWhereUniqueWithoutAuthorInput {
@@ -1262,46 +1345,8 @@ export interface CommentUpsertWithWhereUniqueWithoutPostInput {
   create: CommentCreateWithoutPostInput
 }
 
-export interface CommentWhereInput {
-  AND?: CommentWhereInput[] | null
-  OR?: CommentWhereInput[] | null
-  NOT?: CommentWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  author?: UserWhereInput | null
-  post?: PostWhereInput | null
-}
-
 export interface CommentWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface PostContentCreateManyWithoutPostInput {
@@ -1310,37 +1355,29 @@ export interface PostContentCreateManyWithoutPostInput {
 }
 
 export interface PostContentCreateWithoutPostInput {
+  language: PostLngCreateOneWithoutPostsInput
   title: string
-  description: string
-  imageAlt: string
+  text: string
   metaTitle?: string | null
   metaDescription?: string | null
-  tags?: PostContentCreatetagsInput | null
-  language: PostLngCreateOneWithoutPostsInput
-}
-
-export interface PostContentCreatetagsInput {
-  set?: string[] | null
+  imageAlt: string
 }
 
 export interface PostContentScalarWhereInput {
-  AND?: PostContentScalarWhereInput[] | null
-  OR?: PostContentScalarWhereInput[] | null
-  NOT?: PostContentScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -1371,34 +1408,20 @@ export interface PostContentScalarWhereInput {
   title_not_starts_with?: string | null
   title_ends_with?: string | null
   title_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[] | null
-  description_not_in?: string[] | null
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
-  imageAlt?: string | null
-  imageAlt_not?: string | null
-  imageAlt_in?: string[] | null
-  imageAlt_not_in?: string[] | null
-  imageAlt_lt?: string | null
-  imageAlt_lte?: string | null
-  imageAlt_gt?: string | null
-  imageAlt_gte?: string | null
-  imageAlt_contains?: string | null
-  imageAlt_not_contains?: string | null
-  imageAlt_starts_with?: string | null
-  imageAlt_not_starts_with?: string | null
-  imageAlt_ends_with?: string | null
-  imageAlt_not_ends_with?: string | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[] | null
+  text_not_in?: string[] | null
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
   metaTitle?: string | null
   metaTitle_not?: string | null
   metaTitle_in?: string[] | null
@@ -1427,15 +1450,31 @@ export interface PostContentScalarWhereInput {
   metaDescription_not_starts_with?: string | null
   metaDescription_ends_with?: string | null
   metaDescription_not_ends_with?: string | null
+  imageAlt?: string | null
+  imageAlt_not?: string | null
+  imageAlt_in?: string[] | null
+  imageAlt_not_in?: string[] | null
+  imageAlt_lt?: string | null
+  imageAlt_lte?: string | null
+  imageAlt_gt?: string | null
+  imageAlt_gte?: string | null
+  imageAlt_contains?: string | null
+  imageAlt_not_contains?: string | null
+  imageAlt_starts_with?: string | null
+  imageAlt_not_starts_with?: string | null
+  imageAlt_ends_with?: string | null
+  imageAlt_not_ends_with?: string | null
+  AND?: PostContentScalarWhereInput[] | null
+  OR?: PostContentScalarWhereInput[] | null
+  NOT?: PostContentScalarWhereInput[] | null
 }
 
 export interface PostContentUpdateManyDataInput {
   title?: string | null
-  description?: string | null
-  imageAlt?: string | null
+  text?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
-  tags?: PostContentUpdatetagsInput | null
+  imageAlt?: string | null
 }
 
 export interface PostContentUpdateManyWithWhereNestedInput {
@@ -1445,13 +1484,14 @@ export interface PostContentUpdateManyWithWhereNestedInput {
 
 export interface PostContentUpdateManyWithoutPostInput {
   create?: PostContentCreateWithoutPostInput[] | null
-  connect?: PostContentWhereUniqueInput[] | null
-  disconnect?: PostContentWhereUniqueInput[] | null
   delete?: PostContentWhereUniqueInput[] | null
+  connect?: PostContentWhereUniqueInput[] | null
+  set?: PostContentWhereUniqueInput[] | null
+  disconnect?: PostContentWhereUniqueInput[] | null
   update?: PostContentUpdateWithWhereUniqueWithoutPostInput[] | null
-  updateMany?: PostContentUpdateManyWithWhereNestedInput[] | null
-  deleteMany?: PostContentScalarWhereInput[] | null
   upsert?: PostContentUpsertWithWhereUniqueWithoutPostInput[] | null
+  deleteMany?: PostContentScalarWhereInput[] | null
+  updateMany?: PostContentUpdateManyWithWhereNestedInput[] | null
 }
 
 export interface PostContentUpdateWithWhereUniqueWithoutPostInput {
@@ -1460,17 +1500,12 @@ export interface PostContentUpdateWithWhereUniqueWithoutPostInput {
 }
 
 export interface PostContentUpdateWithoutPostDataInput {
+  language?: PostLngUpdateOneRequiredWithoutPostsInput | null
   title?: string | null
-  description?: string | null
-  imageAlt?: string | null
+  text?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
-  tags?: PostContentUpdatetagsInput | null
-  language?: PostLngUpdateOneRequiredWithoutPostsInput | null
-}
-
-export interface PostContentUpdatetagsInput {
-  set?: string[] | null
+  imageAlt?: string | null
 }
 
 export interface PostContentUpsertWithWhereUniqueWithoutPostInput {
@@ -1479,129 +1514,29 @@ export interface PostContentUpsertWithWhereUniqueWithoutPostInput {
   create: PostContentCreateWithoutPostInput
 }
 
-export interface PostContentWhereInput {
-  AND?: PostContentWhereInput[] | null
-  OR?: PostContentWhereInput[] | null
-  NOT?: PostContentWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[] | null
-  title_not_in?: string[] | null
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[] | null
-  description_not_in?: string[] | null
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
-  imageAlt?: string | null
-  imageAlt_not?: string | null
-  imageAlt_in?: string[] | null
-  imageAlt_not_in?: string[] | null
-  imageAlt_lt?: string | null
-  imageAlt_lte?: string | null
-  imageAlt_gt?: string | null
-  imageAlt_gte?: string | null
-  imageAlt_contains?: string | null
-  imageAlt_not_contains?: string | null
-  imageAlt_starts_with?: string | null
-  imageAlt_not_starts_with?: string | null
-  imageAlt_ends_with?: string | null
-  imageAlt_not_ends_with?: string | null
-  metaTitle?: string | null
-  metaTitle_not?: string | null
-  metaTitle_in?: string[] | null
-  metaTitle_not_in?: string[] | null
-  metaTitle_lt?: string | null
-  metaTitle_lte?: string | null
-  metaTitle_gt?: string | null
-  metaTitle_gte?: string | null
-  metaTitle_contains?: string | null
-  metaTitle_not_contains?: string | null
-  metaTitle_starts_with?: string | null
-  metaTitle_not_starts_with?: string | null
-  metaTitle_ends_with?: string | null
-  metaTitle_not_ends_with?: string | null
-  metaDescription?: string | null
-  metaDescription_not?: string | null
-  metaDescription_in?: string[] | null
-  metaDescription_not_in?: string[] | null
-  metaDescription_lt?: string | null
-  metaDescription_lte?: string | null
-  metaDescription_gt?: string | null
-  metaDescription_gte?: string | null
-  metaDescription_contains?: string | null
-  metaDescription_not_contains?: string | null
-  metaDescription_starts_with?: string | null
-  metaDescription_not_starts_with?: string | null
-  metaDescription_ends_with?: string | null
-  metaDescription_not_ends_with?: string | null
-  post?: PostWhereInput | null
-  language?: PostLngWhereInput | null
-}
-
 export interface PostContentWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface PostCreateInput {
-  slug: string
-  imageSrc: string
-  isPublished?: boolean | null
   author: UserCreateOneWithoutPostsInput
+  slug: string
+  isPublished?: boolean | null
+  imageSrc: string
   contents?: PostContentCreateManyWithoutPostInput | null
+  tags?: PostTagCreateManyInput | null
   comments?: CommentCreateManyWithoutPostInput | null
+  likes?: number | null
+  likedBy?: UserCreateManyWithoutPostLikesInput | null
 }
 
 export interface PostCreateManyWithoutAuthorInput {
   create?: PostCreateWithoutAuthorInput[] | null
+  connect?: PostWhereUniqueInput[] | null
+}
+
+export interface PostCreateManyWithoutLikedByInput {
+  create?: PostCreateWithoutLikedByInput[] | null
   connect?: PostWhereUniqueInput[] | null
 }
 
@@ -1612,18 +1547,35 @@ export interface PostCreateOneWithoutCommentsInput {
 
 export interface PostCreateWithoutAuthorInput {
   slug: string
-  imageSrc: string
   isPublished?: boolean | null
+  imageSrc: string
   contents?: PostContentCreateManyWithoutPostInput | null
+  tags?: PostTagCreateManyInput | null
   comments?: CommentCreateManyWithoutPostInput | null
+  likes?: number | null
+  likedBy?: UserCreateManyWithoutPostLikesInput | null
 }
 
 export interface PostCreateWithoutCommentsInput {
-  slug: string
-  imageSrc: string
-  isPublished?: boolean | null
   author: UserCreateOneWithoutPostsInput
+  slug: string
+  isPublished?: boolean | null
+  imageSrc: string
   contents?: PostContentCreateManyWithoutPostInput | null
+  tags?: PostTagCreateManyInput | null
+  likes?: number | null
+  likedBy?: UserCreateManyWithoutPostLikesInput | null
+}
+
+export interface PostCreateWithoutLikedByInput {
+  author: UserCreateOneWithoutPostsInput
+  slug: string
+  isPublished?: boolean | null
+  imageSrc: string
+  contents?: PostContentCreateManyWithoutPostInput | null
+  tags?: PostTagCreateManyInput | null
+  comments?: CommentCreateManyWithoutPostInput | null
+  likes?: number | null
 }
 
 export interface PostLngCreateOneWithoutPostsInput {
@@ -1638,9 +1590,9 @@ export interface PostLngCreateWithoutPostsInput {
 
 export interface PostLngUpdateOneRequiredWithoutPostsInput {
   create?: PostLngCreateWithoutPostsInput | null
-  connect?: PostLngWhereUniqueInput | null
   update?: PostLngUpdateWithoutPostsDataInput | null
   upsert?: PostLngUpsertWithoutPostsInput | null
+  connect?: PostLngWhereUniqueInput | null
 }
 
 export interface PostLngUpdateWithoutPostsDataInput {
@@ -1653,81 +1605,27 @@ export interface PostLngUpsertWithoutPostsInput {
   create: PostLngCreateWithoutPostsInput
 }
 
-export interface PostLngWhereInput {
-  AND?: PostLngWhereInput[] | null
-  OR?: PostLngWhereInput[] | null
-  NOT?: PostLngWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  country?: string | null
-  country_not?: string | null
-  country_in?: string[] | null
-  country_not_in?: string[] | null
-  country_lt?: string | null
-  country_lte?: string | null
-  country_gt?: string | null
-  country_gte?: string | null
-  country_contains?: string | null
-  country_not_contains?: string | null
-  country_starts_with?: string | null
-  country_not_starts_with?: string | null
-  country_ends_with?: string | null
-  country_not_ends_with?: string | null
-  locale?: string | null
-  locale_not?: string | null
-  locale_in?: string[] | null
-  locale_not_in?: string[] | null
-  locale_lt?: string | null
-  locale_lte?: string | null
-  locale_gt?: string | null
-  locale_gte?: string | null
-  locale_contains?: string | null
-  locale_not_contains?: string | null
-  locale_starts_with?: string | null
-  locale_not_starts_with?: string | null
-  locale_ends_with?: string | null
-  locale_not_ends_with?: string | null
-  posts_every?: PostContentWhereInput | null
-  posts_some?: PostContentWhereInput | null
-  posts_none?: PostContentWhereInput | null
-}
-
 export interface PostLngWhereUniqueInput {
-  id?: string | null
+  id?: any | null
   country?: string | null
   locale?: string | null
 }
 
 export interface PostScalarWhereInput {
-  AND?: PostScalarWhereInput[] | null
-  OR?: PostScalarWhereInput[] | null
-  NOT?: PostScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -1758,6 +1656,8 @@ export interface PostScalarWhereInput {
   slug_not_starts_with?: string | null
   slug_ends_with?: string | null
   slug_not_ends_with?: string | null
+  isPublished?: boolean | null
+  isPublished_not?: boolean | null
   imageSrc?: string | null
   imageSrc_not?: string | null
   imageSrc_in?: string[] | null
@@ -1772,23 +1672,199 @@ export interface PostScalarWhereInput {
   imageSrc_not_starts_with?: string | null
   imageSrc_ends_with?: string | null
   imageSrc_not_ends_with?: string | null
-  isPublished?: boolean | null
-  isPublished_not?: boolean | null
+  likes?: number | null
+  likes_not?: number | null
+  likes_in?: number[] | null
+  likes_not_in?: number[] | null
+  likes_lt?: number | null
+  likes_lte?: number | null
+  likes_gt?: number | null
+  likes_gte?: number | null
+  AND?: PostScalarWhereInput[] | null
+  OR?: PostScalarWhereInput[] | null
+  NOT?: PostScalarWhereInput[] | null
+}
+
+export interface PostTagContentCreateOneWithoutTagInput {
+  create?: PostTagContentCreateWithoutTagInput | null
+  connect?: PostTagContentWhereUniqueInput | null
+}
+
+export interface PostTagContentCreateWithoutTagInput {
+  title: string
+}
+
+export interface PostTagContentUpdateOneRequiredWithoutTagInput {
+  create?: PostTagContentCreateWithoutTagInput | null
+  update?: PostTagContentUpdateWithoutTagDataInput | null
+  upsert?: PostTagContentUpsertWithoutTagInput | null
+  connect?: PostTagContentWhereUniqueInput | null
+}
+
+export interface PostTagContentUpdateWithoutTagDataInput {
+  title?: string | null
+}
+
+export interface PostTagContentUpsertWithoutTagInput {
+  update: PostTagContentUpdateWithoutTagDataInput
+  create: PostTagContentCreateWithoutTagInput
+}
+
+export interface PostTagContentWhereUniqueInput {
+  id?: any | null
+}
+
+export interface PostTagCreateInput {
+  color: string
+  language: PostTagLngCreateOneWithoutTagsInput
+  contents: PostTagContentCreateOneWithoutTagInput
+}
+
+export interface PostTagCreateManyInput {
+  create?: PostTagCreateInput[] | null
+  connect?: PostTagWhereUniqueInput[] | null
+}
+
+export interface PostTagLngCreateOneWithoutTagsInput {
+  create?: PostTagLngCreateWithoutTagsInput | null
+  connect?: PostTagLngWhereUniqueInput | null
+}
+
+export interface PostTagLngCreateWithoutTagsInput {
+  country: string
+  locale: string
+}
+
+export interface PostTagLngUpdateOneRequiredWithoutTagsInput {
+  create?: PostTagLngCreateWithoutTagsInput | null
+  update?: PostTagLngUpdateWithoutTagsDataInput | null
+  upsert?: PostTagLngUpsertWithoutTagsInput | null
+  connect?: PostTagLngWhereUniqueInput | null
+}
+
+export interface PostTagLngUpdateWithoutTagsDataInput {
+  country?: string | null
+  locale?: string | null
+}
+
+export interface PostTagLngUpsertWithoutTagsInput {
+  update: PostTagLngUpdateWithoutTagsDataInput
+  create: PostTagLngCreateWithoutTagsInput
+}
+
+export interface PostTagLngWhereUniqueInput {
+  id?: any | null
+}
+
+export interface PostTagScalarWhereInput {
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
+  createdAt?: any | null
+  createdAt_not?: any | null
+  createdAt_in?: any[] | null
+  createdAt_not_in?: any[] | null
+  createdAt_lt?: any | null
+  createdAt_lte?: any | null
+  createdAt_gt?: any | null
+  createdAt_gte?: any | null
+  updatedAt?: any | null
+  updatedAt_not?: any | null
+  updatedAt_in?: any[] | null
+  updatedAt_not_in?: any[] | null
+  updatedAt_lt?: any | null
+  updatedAt_lte?: any | null
+  updatedAt_gt?: any | null
+  updatedAt_gte?: any | null
+  color?: string | null
+  color_not?: string | null
+  color_in?: string[] | null
+  color_not_in?: string[] | null
+  color_lt?: string | null
+  color_lte?: string | null
+  color_gt?: string | null
+  color_gte?: string | null
+  color_contains?: string | null
+  color_not_contains?: string | null
+  color_starts_with?: string | null
+  color_not_starts_with?: string | null
+  color_ends_with?: string | null
+  color_not_ends_with?: string | null
+  AND?: PostTagScalarWhereInput[] | null
+  OR?: PostTagScalarWhereInput[] | null
+  NOT?: PostTagScalarWhereInput[] | null
+}
+
+export interface PostTagUpdateDataInput {
+  color?: string | null
+  language?: PostTagLngUpdateOneRequiredWithoutTagsInput | null
+  contents?: PostTagContentUpdateOneRequiredWithoutTagInput | null
+}
+
+export interface PostTagUpdateManyDataInput {
+  color?: string | null
+}
+
+export interface PostTagUpdateManyInput {
+  create?: PostTagCreateInput[] | null
+  update?: PostTagUpdateWithWhereUniqueNestedInput[] | null
+  upsert?: PostTagUpsertWithWhereUniqueNestedInput[] | null
+  delete?: PostTagWhereUniqueInput[] | null
+  connect?: PostTagWhereUniqueInput[] | null
+  set?: PostTagWhereUniqueInput[] | null
+  disconnect?: PostTagWhereUniqueInput[] | null
+  deleteMany?: PostTagScalarWhereInput[] | null
+  updateMany?: PostTagUpdateManyWithWhereNestedInput[] | null
+}
+
+export interface PostTagUpdateManyWithWhereNestedInput {
+  where: PostTagScalarWhereInput
+  data: PostTagUpdateManyDataInput
+}
+
+export interface PostTagUpdateWithWhereUniqueNestedInput {
+  where: PostTagWhereUniqueInput
+  data: PostTagUpdateDataInput
+}
+
+export interface PostTagUpsertWithWhereUniqueNestedInput {
+  where: PostTagWhereUniqueInput
+  update: PostTagUpdateDataInput
+  create: PostTagCreateInput
+}
+
+export interface PostTagWhereUniqueInput {
+  id?: any | null
 }
 
 export interface PostUpdateInput {
-  slug?: string | null
-  imageSrc?: string | null
-  isPublished?: boolean | null
   author?: UserUpdateOneRequiredWithoutPostsInput | null
+  slug?: string | null
+  isPublished?: boolean | null
+  imageSrc?: string | null
   contents?: PostContentUpdateManyWithoutPostInput | null
+  tags?: PostTagUpdateManyInput | null
   comments?: CommentUpdateManyWithoutPostInput | null
+  likes?: number | null
+  likedBy?: UserUpdateManyWithoutPostLikesInput | null
 }
 
 export interface PostUpdateManyDataInput {
   slug?: string | null
-  imageSrc?: string | null
   isPublished?: boolean | null
+  imageSrc?: string | null
+  likes?: number | null
 }
 
 export interface PostUpdateManyWithWhereNestedInput {
@@ -1798,20 +1874,33 @@ export interface PostUpdateManyWithWhereNestedInput {
 
 export interface PostUpdateManyWithoutAuthorInput {
   create?: PostCreateWithoutAuthorInput[] | null
-  connect?: PostWhereUniqueInput[] | null
-  disconnect?: PostWhereUniqueInput[] | null
   delete?: PostWhereUniqueInput[] | null
+  connect?: PostWhereUniqueInput[] | null
+  set?: PostWhereUniqueInput[] | null
+  disconnect?: PostWhereUniqueInput[] | null
   update?: PostUpdateWithWhereUniqueWithoutAuthorInput[] | null
-  updateMany?: PostUpdateManyWithWhereNestedInput[] | null
-  deleteMany?: PostScalarWhereInput[] | null
   upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput[] | null
+  deleteMany?: PostScalarWhereInput[] | null
+  updateMany?: PostUpdateManyWithWhereNestedInput[] | null
+}
+
+export interface PostUpdateManyWithoutLikedByInput {
+  create?: PostCreateWithoutLikedByInput[] | null
+  delete?: PostWhereUniqueInput[] | null
+  connect?: PostWhereUniqueInput[] | null
+  set?: PostWhereUniqueInput[] | null
+  disconnect?: PostWhereUniqueInput[] | null
+  update?: PostUpdateWithWhereUniqueWithoutLikedByInput[] | null
+  upsert?: PostUpsertWithWhereUniqueWithoutLikedByInput[] | null
+  deleteMany?: PostScalarWhereInput[] | null
+  updateMany?: PostUpdateManyWithWhereNestedInput[] | null
 }
 
 export interface PostUpdateOneRequiredWithoutCommentsInput {
   create?: PostCreateWithoutCommentsInput | null
-  connect?: PostWhereUniqueInput | null
   update?: PostUpdateWithoutCommentsDataInput | null
   upsert?: PostUpsertWithoutCommentsInput | null
+  connect?: PostWhereUniqueInput | null
 }
 
 export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
@@ -1819,20 +1908,42 @@ export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
   data: PostUpdateWithoutAuthorDataInput
 }
 
+export interface PostUpdateWithWhereUniqueWithoutLikedByInput {
+  where: PostWhereUniqueInput
+  data: PostUpdateWithoutLikedByDataInput
+}
+
 export interface PostUpdateWithoutAuthorDataInput {
   slug?: string | null
-  imageSrc?: string | null
   isPublished?: boolean | null
+  imageSrc?: string | null
   contents?: PostContentUpdateManyWithoutPostInput | null
+  tags?: PostTagUpdateManyInput | null
   comments?: CommentUpdateManyWithoutPostInput | null
+  likes?: number | null
+  likedBy?: UserUpdateManyWithoutPostLikesInput | null
 }
 
 export interface PostUpdateWithoutCommentsDataInput {
-  slug?: string | null
-  imageSrc?: string | null
-  isPublished?: boolean | null
   author?: UserUpdateOneRequiredWithoutPostsInput | null
+  slug?: string | null
+  isPublished?: boolean | null
+  imageSrc?: string | null
   contents?: PostContentUpdateManyWithoutPostInput | null
+  tags?: PostTagUpdateManyInput | null
+  likes?: number | null
+  likedBy?: UserUpdateManyWithoutPostLikesInput | null
+}
+
+export interface PostUpdateWithoutLikedByDataInput {
+  author?: UserUpdateOneRequiredWithoutPostsInput | null
+  slug?: string | null
+  isPublished?: boolean | null
+  imageSrc?: string | null
+  contents?: PostContentUpdateManyWithoutPostInput | null
+  tags?: PostTagUpdateManyInput | null
+  comments?: CommentUpdateManyWithoutPostInput | null
+  likes?: number | null
 }
 
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
@@ -1841,87 +1952,53 @@ export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
   create: PostCreateWithoutAuthorInput
 }
 
+export interface PostUpsertWithWhereUniqueWithoutLikedByInput {
+  where: PostWhereUniqueInput
+  update: PostUpdateWithoutLikedByDataInput
+  create: PostCreateWithoutLikedByInput
+}
+
 export interface PostUpsertWithoutCommentsInput {
   update: PostUpdateWithoutCommentsDataInput
   create: PostCreateWithoutCommentsInput
 }
 
-export interface PostWhereInput {
-  AND?: PostWhereInput[] | null
-  OR?: PostWhereInput[] | null
-  NOT?: PostWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
+export interface PostWhereUniqueInput {
+  id?: any | null
   slug?: string | null
-  slug_not?: string | null
-  slug_in?: string[] | null
-  slug_not_in?: string[] | null
-  slug_lt?: string | null
-  slug_lte?: string | null
-  slug_gt?: string | null
-  slug_gte?: string | null
-  slug_contains?: string | null
-  slug_not_contains?: string | null
-  slug_starts_with?: string | null
-  slug_not_starts_with?: string | null
-  slug_ends_with?: string | null
-  slug_not_ends_with?: string | null
-  imageSrc?: string | null
-  imageSrc_not?: string | null
-  imageSrc_in?: string[] | null
-  imageSrc_not_in?: string[] | null
-  imageSrc_lt?: string | null
-  imageSrc_lte?: string | null
-  imageSrc_gt?: string | null
-  imageSrc_gte?: string | null
-  imageSrc_contains?: string | null
-  imageSrc_not_contains?: string | null
-  imageSrc_starts_with?: string | null
-  imageSrc_not_starts_with?: string | null
-  imageSrc_ends_with?: string | null
-  imageSrc_not_ends_with?: string | null
-  isPublished?: boolean | null
-  isPublished_not?: boolean | null
-  author?: UserWhereInput | null
-  contents_every?: PostContentWhereInput | null
-  contents_some?: PostContentWhereInput | null
-  contents_none?: PostContentWhereInput | null
-  comments_every?: CommentWhereInput | null
-  comments_some?: CommentWhereInput | null
-  comments_none?: CommentWhereInput | null
 }
 
-export interface PostWhereUniqueInput {
-  id?: string | null
-  slug?: string | null
+export interface ProfileCreateOneWithoutUserInput {
+  create?: ProfileCreateWithoutUserInput | null
+  connect?: ProfileWhereUniqueInput | null
+}
+
+export interface ProfileCreateWithoutUserInput {
+  bio: string
+  avatar: AvatarCreateOneInput
+}
+
+export interface ProfileUpdateOneWithoutUserInput {
+  create?: ProfileCreateWithoutUserInput | null
+  update?: ProfileUpdateWithoutUserDataInput | null
+  upsert?: ProfileUpsertWithoutUserInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: ProfileWhereUniqueInput | null
+}
+
+export interface ProfileUpdateWithoutUserDataInput {
+  bio?: string | null
+  avatar?: AvatarUpdateOneRequiredInput | null
+}
+
+export interface ProfileUpsertWithoutUserInput {
+  update: ProfileUpdateWithoutUserDataInput
+  create: ProfileCreateWithoutUserInput
+}
+
+export interface ProfileWhereUniqueInput {
+  id?: any | null
 }
 
 export interface ProjectAlbumCreateOneWithoutProjectInput {
@@ -1935,9 +2012,9 @@ export interface ProjectAlbumCreateWithoutProjectInput {
 
 export interface ProjectAlbumUpdateOneRequiredWithoutProjectInput {
   create?: ProjectAlbumCreateWithoutProjectInput | null
-  connect?: ProjectAlbumWhereUniqueInput | null
   update?: ProjectAlbumUpdateWithoutProjectDataInput | null
   upsert?: ProjectAlbumUpsertWithoutProjectInput | null
+  connect?: ProjectAlbumWhereUniqueInput | null
 }
 
 export interface ProjectAlbumUpdateWithoutProjectDataInput {
@@ -1949,48 +2026,8 @@ export interface ProjectAlbumUpsertWithoutProjectInput {
   create: ProjectAlbumCreateWithoutProjectInput
 }
 
-export interface ProjectAlbumWhereInput {
-  AND?: ProjectAlbumWhereInput[] | null
-  OR?: ProjectAlbumWhereInput[] | null
-  NOT?: ProjectAlbumWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  project?: ProjectWhereInput | null
-  images_every?: ProjectImageWhereInput | null
-  images_some?: ProjectImageWhereInput | null
-  images_none?: ProjectImageWhereInput | null
-}
-
 export interface ProjectAlbumWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface ProjectCategoryContentCreateManyWithoutCategoryInput {
@@ -1999,32 +2036,29 @@ export interface ProjectCategoryContentCreateManyWithoutCategoryInput {
 }
 
 export interface ProjectCategoryContentCreateWithoutCategoryInput {
+  language: ProjectCategoryLngCreateOneWithoutCategoriesInput
   title: string
-  image: string
+  text: string
   imageAlt: string
   metaTitle?: string | null
   metaDescription?: string | null
-  language: ProjectCategoryLngCreateOneWithoutCategoriesInput
 }
 
 export interface ProjectCategoryContentScalarWhereInput {
-  AND?: ProjectCategoryContentScalarWhereInput[] | null
-  OR?: ProjectCategoryContentScalarWhereInput[] | null
-  NOT?: ProjectCategoryContentScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -2055,20 +2089,20 @@ export interface ProjectCategoryContentScalarWhereInput {
   title_not_starts_with?: string | null
   title_ends_with?: string | null
   title_not_ends_with?: string | null
-  image?: string | null
-  image_not?: string | null
-  image_in?: string[] | null
-  image_not_in?: string[] | null
-  image_lt?: string | null
-  image_lte?: string | null
-  image_gt?: string | null
-  image_gte?: string | null
-  image_contains?: string | null
-  image_not_contains?: string | null
-  image_starts_with?: string | null
-  image_not_starts_with?: string | null
-  image_ends_with?: string | null
-  image_not_ends_with?: string | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[] | null
+  text_not_in?: string[] | null
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
   imageAlt?: string | null
   imageAlt_not?: string | null
   imageAlt_in?: string[] | null
@@ -2111,11 +2145,14 @@ export interface ProjectCategoryContentScalarWhereInput {
   metaDescription_not_starts_with?: string | null
   metaDescription_ends_with?: string | null
   metaDescription_not_ends_with?: string | null
+  AND?: ProjectCategoryContentScalarWhereInput[] | null
+  OR?: ProjectCategoryContentScalarWhereInput[] | null
+  NOT?: ProjectCategoryContentScalarWhereInput[] | null
 }
 
 export interface ProjectCategoryContentUpdateManyDataInput {
   title?: string | null
-  image?: string | null
+  text?: string | null
   imageAlt?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
@@ -2128,17 +2165,18 @@ export interface ProjectCategoryContentUpdateManyWithWhereNestedInput {
 
 export interface ProjectCategoryContentUpdateManyWithoutCategoryInput {
   create?: ProjectCategoryContentCreateWithoutCategoryInput[] | null
-  connect?: ProjectCategoryContentWhereUniqueInput[] | null
-  disconnect?: ProjectCategoryContentWhereUniqueInput[] | null
   delete?: ProjectCategoryContentWhereUniqueInput[] | null
+  connect?: ProjectCategoryContentWhereUniqueInput[] | null
+  set?: ProjectCategoryContentWhereUniqueInput[] | null
+  disconnect?: ProjectCategoryContentWhereUniqueInput[] | null
   update?:
     | ProjectCategoryContentUpdateWithWhereUniqueWithoutCategoryInput[]
     | null
-  updateMany?: ProjectCategoryContentUpdateManyWithWhereNestedInput[] | null
-  deleteMany?: ProjectCategoryContentScalarWhereInput[] | null
   upsert?:
     | ProjectCategoryContentUpsertWithWhereUniqueWithoutCategoryInput[]
     | null
+  deleteMany?: ProjectCategoryContentScalarWhereInput[] | null
+  updateMany?: ProjectCategoryContentUpdateManyWithWhereNestedInput[] | null
 }
 
 export interface ProjectCategoryContentUpdateWithWhereUniqueWithoutCategoryInput {
@@ -2147,12 +2185,12 @@ export interface ProjectCategoryContentUpdateWithWhereUniqueWithoutCategoryInput
 }
 
 export interface ProjectCategoryContentUpdateWithoutCategoryDataInput {
+  language?: ProjectCategoryLngUpdateOneRequiredWithoutCategoriesInput | null
   title?: string | null
-  image?: string | null
+  text?: string | null
   imageAlt?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
-  language?: ProjectCategoryLngUpdateOneRequiredWithoutCategoriesInput | null
 }
 
 export interface ProjectCategoryContentUpsertWithWhereUniqueWithoutCategoryInput {
@@ -2161,121 +2199,14 @@ export interface ProjectCategoryContentUpsertWithWhereUniqueWithoutCategoryInput
   create: ProjectCategoryContentCreateWithoutCategoryInput
 }
 
-export interface ProjectCategoryContentWhereInput {
-  AND?: ProjectCategoryContentWhereInput[] | null
-  OR?: ProjectCategoryContentWhereInput[] | null
-  NOT?: ProjectCategoryContentWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[] | null
-  title_not_in?: string[] | null
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  image?: string | null
-  image_not?: string | null
-  image_in?: string[] | null
-  image_not_in?: string[] | null
-  image_lt?: string | null
-  image_lte?: string | null
-  image_gt?: string | null
-  image_gte?: string | null
-  image_contains?: string | null
-  image_not_contains?: string | null
-  image_starts_with?: string | null
-  image_not_starts_with?: string | null
-  image_ends_with?: string | null
-  image_not_ends_with?: string | null
-  imageAlt?: string | null
-  imageAlt_not?: string | null
-  imageAlt_in?: string[] | null
-  imageAlt_not_in?: string[] | null
-  imageAlt_lt?: string | null
-  imageAlt_lte?: string | null
-  imageAlt_gt?: string | null
-  imageAlt_gte?: string | null
-  imageAlt_contains?: string | null
-  imageAlt_not_contains?: string | null
-  imageAlt_starts_with?: string | null
-  imageAlt_not_starts_with?: string | null
-  imageAlt_ends_with?: string | null
-  imageAlt_not_ends_with?: string | null
-  metaTitle?: string | null
-  metaTitle_not?: string | null
-  metaTitle_in?: string[] | null
-  metaTitle_not_in?: string[] | null
-  metaTitle_lt?: string | null
-  metaTitle_lte?: string | null
-  metaTitle_gt?: string | null
-  metaTitle_gte?: string | null
-  metaTitle_contains?: string | null
-  metaTitle_not_contains?: string | null
-  metaTitle_starts_with?: string | null
-  metaTitle_not_starts_with?: string | null
-  metaTitle_ends_with?: string | null
-  metaTitle_not_ends_with?: string | null
-  metaDescription?: string | null
-  metaDescription_not?: string | null
-  metaDescription_in?: string[] | null
-  metaDescription_not_in?: string[] | null
-  metaDescription_lt?: string | null
-  metaDescription_lte?: string | null
-  metaDescription_gt?: string | null
-  metaDescription_gte?: string | null
-  metaDescription_contains?: string | null
-  metaDescription_not_contains?: string | null
-  metaDescription_starts_with?: string | null
-  metaDescription_not_starts_with?: string | null
-  metaDescription_ends_with?: string | null
-  metaDescription_not_ends_with?: string | null
-  category?: ProjectCategoryWhereInput | null
-  language?: ProjectCategoryLngWhereInput | null
-}
-
 export interface ProjectCategoryContentWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface ProjectCategoryCreateInput {
-  slug: string
   contents?: ProjectCategoryContentCreateManyWithoutCategoryInput | null
+  slug: string
+  image: string
   projects?: ProjectCreateManyWithoutCategoryInput | null
 }
 
@@ -2285,8 +2216,9 @@ export interface ProjectCategoryCreateOneWithoutProjectsInput {
 }
 
 export interface ProjectCategoryCreateWithoutProjectsInput {
-  slug: string
   contents?: ProjectCategoryContentCreateManyWithoutCategoryInput | null
+  slug: string
+  image: string
 }
 
 export interface ProjectCategoryLngCreateOneWithoutCategoriesInput {
@@ -2301,9 +2233,9 @@ export interface ProjectCategoryLngCreateWithoutCategoriesInput {
 
 export interface ProjectCategoryLngUpdateOneRequiredWithoutCategoriesInput {
   create?: ProjectCategoryLngCreateWithoutCategoriesInput | null
-  connect?: ProjectCategoryLngWhereUniqueInput | null
   update?: ProjectCategoryLngUpdateWithoutCategoriesDataInput | null
   upsert?: ProjectCategoryLngUpsertWithoutCategoriesInput | null
+  connect?: ProjectCategoryLngWhereUniqueInput | null
 }
 
 export interface ProjectCategoryLngUpdateWithoutCategoriesDataInput {
@@ -2316,79 +2248,30 @@ export interface ProjectCategoryLngUpsertWithoutCategoriesInput {
   create: ProjectCategoryLngCreateWithoutCategoriesInput
 }
 
-export interface ProjectCategoryLngWhereInput {
-  AND?: ProjectCategoryLngWhereInput[] | null
-  OR?: ProjectCategoryLngWhereInput[] | null
-  NOT?: ProjectCategoryLngWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  country?: string | null
-  country_not?: string | null
-  country_in?: string[] | null
-  country_not_in?: string[] | null
-  country_lt?: string | null
-  country_lte?: string | null
-  country_gt?: string | null
-  country_gte?: string | null
-  country_contains?: string | null
-  country_not_contains?: string | null
-  country_starts_with?: string | null
-  country_not_starts_with?: string | null
-  country_ends_with?: string | null
-  country_not_ends_with?: string | null
-  locale?: string | null
-  locale_not?: string | null
-  locale_in?: string[] | null
-  locale_not_in?: string[] | null
-  locale_lt?: string | null
-  locale_lte?: string | null
-  locale_gt?: string | null
-  locale_gte?: string | null
-  locale_contains?: string | null
-  locale_not_contains?: string | null
-  locale_starts_with?: string | null
-  locale_not_starts_with?: string | null
-  locale_ends_with?: string | null
-  locale_not_ends_with?: string | null
-  categories_every?: ProjectCategoryContentWhereInput | null
-  categories_some?: ProjectCategoryContentWhereInput | null
-  categories_none?: ProjectCategoryContentWhereInput | null
-}
-
 export interface ProjectCategoryLngWhereUniqueInput {
-  id?: string | null
+  id?: any | null
   country?: string | null
   locale?: string | null
 }
 
 export interface ProjectCategoryUpdateInput {
-  slug?: string | null
   contents?: ProjectCategoryContentUpdateManyWithoutCategoryInput | null
+  slug?: string | null
+  image?: string | null
   projects?: ProjectUpdateManyWithoutCategoryInput | null
 }
 
 export interface ProjectCategoryUpdateOneRequiredWithoutProjectsInput {
   create?: ProjectCategoryCreateWithoutProjectsInput | null
-  connect?: ProjectCategoryWhereUniqueInput | null
   update?: ProjectCategoryUpdateWithoutProjectsDataInput | null
   upsert?: ProjectCategoryUpsertWithoutProjectsInput | null
+  connect?: ProjectCategoryWhereUniqueInput | null
 }
 
 export interface ProjectCategoryUpdateWithoutProjectsDataInput {
-  slug?: string | null
   contents?: ProjectCategoryContentUpdateManyWithoutCategoryInput | null
+  slug?: string | null
+  image?: string | null
 }
 
 export interface ProjectCategoryUpsertWithoutProjectsInput {
@@ -2396,64 +2279,8 @@ export interface ProjectCategoryUpsertWithoutProjectsInput {
   create: ProjectCategoryCreateWithoutProjectsInput
 }
 
-export interface ProjectCategoryWhereInput {
-  AND?: ProjectCategoryWhereInput[] | null
-  OR?: ProjectCategoryWhereInput[] | null
-  NOT?: ProjectCategoryWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  slug?: string | null
-  slug_not?: string | null
-  slug_in?: string[] | null
-  slug_not_in?: string[] | null
-  slug_lt?: string | null
-  slug_lte?: string | null
-  slug_gt?: string | null
-  slug_gte?: string | null
-  slug_contains?: string | null
-  slug_not_contains?: string | null
-  slug_starts_with?: string | null
-  slug_not_starts_with?: string | null
-  slug_ends_with?: string | null
-  slug_not_ends_with?: string | null
-  contents_every?: ProjectCategoryContentWhereInput | null
-  contents_some?: ProjectCategoryContentWhereInput | null
-  contents_none?: ProjectCategoryContentWhereInput | null
-  projects_every?: ProjectWhereInput | null
-  projects_some?: ProjectWhereInput | null
-  projects_none?: ProjectWhereInput | null
-}
-
 export interface ProjectCategoryWhereUniqueInput {
-  id?: string | null
+  id?: any | null
   slug?: string | null
 }
 
@@ -2463,37 +2290,29 @@ export interface ProjectContentCreateManyWithoutProjectInput {
 }
 
 export interface ProjectContentCreateWithoutProjectInput {
+  language: ProjectLngCreateOneWithoutProjectsInput
   title: string
-  description: string
+  text: string
   metaTitle?: string | null
   metaDescription?: string | null
   isActive?: boolean | null
-  tags?: ProjectContentCreatetagsInput | null
-  language: ProjectLngCreateOneWithoutProjectsInput
-}
-
-export interface ProjectContentCreatetagsInput {
-  set?: string[] | null
 }
 
 export interface ProjectContentScalarWhereInput {
-  AND?: ProjectContentScalarWhereInput[] | null
-  OR?: ProjectContentScalarWhereInput[] | null
-  NOT?: ProjectContentScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -2524,20 +2343,20 @@ export interface ProjectContentScalarWhereInput {
   title_not_starts_with?: string | null
   title_ends_with?: string | null
   title_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[] | null
-  description_not_in?: string[] | null
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[] | null
+  text_not_in?: string[] | null
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
   metaTitle?: string | null
   metaTitle_not?: string | null
   metaTitle_in?: string[] | null
@@ -2568,15 +2387,17 @@ export interface ProjectContentScalarWhereInput {
   metaDescription_not_ends_with?: string | null
   isActive?: boolean | null
   isActive_not?: boolean | null
+  AND?: ProjectContentScalarWhereInput[] | null
+  OR?: ProjectContentScalarWhereInput[] | null
+  NOT?: ProjectContentScalarWhereInput[] | null
 }
 
 export interface ProjectContentUpdateManyDataInput {
   title?: string | null
-  description?: string | null
+  text?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
   isActive?: boolean | null
-  tags?: ProjectContentUpdatetagsInput | null
 }
 
 export interface ProjectContentUpdateManyWithWhereNestedInput {
@@ -2586,13 +2407,14 @@ export interface ProjectContentUpdateManyWithWhereNestedInput {
 
 export interface ProjectContentUpdateManyWithoutProjectInput {
   create?: ProjectContentCreateWithoutProjectInput[] | null
-  connect?: ProjectContentWhereUniqueInput[] | null
-  disconnect?: ProjectContentWhereUniqueInput[] | null
   delete?: ProjectContentWhereUniqueInput[] | null
+  connect?: ProjectContentWhereUniqueInput[] | null
+  set?: ProjectContentWhereUniqueInput[] | null
+  disconnect?: ProjectContentWhereUniqueInput[] | null
   update?: ProjectContentUpdateWithWhereUniqueWithoutProjectInput[] | null
-  updateMany?: ProjectContentUpdateManyWithWhereNestedInput[] | null
-  deleteMany?: ProjectContentScalarWhereInput[] | null
   upsert?: ProjectContentUpsertWithWhereUniqueWithoutProjectInput[] | null
+  deleteMany?: ProjectContentScalarWhereInput[] | null
+  updateMany?: ProjectContentUpdateManyWithWhereNestedInput[] | null
 }
 
 export interface ProjectContentUpdateWithWhereUniqueWithoutProjectInput {
@@ -2601,17 +2423,12 @@ export interface ProjectContentUpdateWithWhereUniqueWithoutProjectInput {
 }
 
 export interface ProjectContentUpdateWithoutProjectDataInput {
+  language?: ProjectLngUpdateOneRequiredWithoutProjectsInput | null
   title?: string | null
-  description?: string | null
+  text?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
   isActive?: boolean | null
-  tags?: ProjectContentUpdatetagsInput | null
-  language?: ProjectLngUpdateOneRequiredWithoutProjectsInput | null
-}
-
-export interface ProjectContentUpdatetagsInput {
-  set?: string[] | null
 }
 
 export interface ProjectContentUpsertWithWhereUniqueWithoutProjectInput {
@@ -2620,111 +2437,22 @@ export interface ProjectContentUpsertWithWhereUniqueWithoutProjectInput {
   create: ProjectContentCreateWithoutProjectInput
 }
 
-export interface ProjectContentWhereInput {
-  AND?: ProjectContentWhereInput[] | null
-  OR?: ProjectContentWhereInput[] | null
-  NOT?: ProjectContentWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[] | null
-  title_not_in?: string[] | null
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  description?: string | null
-  description_not?: string | null
-  description_in?: string[] | null
-  description_not_in?: string[] | null
-  description_lt?: string | null
-  description_lte?: string | null
-  description_gt?: string | null
-  description_gte?: string | null
-  description_contains?: string | null
-  description_not_contains?: string | null
-  description_starts_with?: string | null
-  description_not_starts_with?: string | null
-  description_ends_with?: string | null
-  description_not_ends_with?: string | null
-  metaTitle?: string | null
-  metaTitle_not?: string | null
-  metaTitle_in?: string[] | null
-  metaTitle_not_in?: string[] | null
-  metaTitle_lt?: string | null
-  metaTitle_lte?: string | null
-  metaTitle_gt?: string | null
-  metaTitle_gte?: string | null
-  metaTitle_contains?: string | null
-  metaTitle_not_contains?: string | null
-  metaTitle_starts_with?: string | null
-  metaTitle_not_starts_with?: string | null
-  metaTitle_ends_with?: string | null
-  metaTitle_not_ends_with?: string | null
-  metaDescription?: string | null
-  metaDescription_not?: string | null
-  metaDescription_in?: string[] | null
-  metaDescription_not_in?: string[] | null
-  metaDescription_lt?: string | null
-  metaDescription_lte?: string | null
-  metaDescription_gt?: string | null
-  metaDescription_gte?: string | null
-  metaDescription_contains?: string | null
-  metaDescription_not_contains?: string | null
-  metaDescription_starts_with?: string | null
-  metaDescription_not_starts_with?: string | null
-  metaDescription_ends_with?: string | null
-  metaDescription_not_ends_with?: string | null
-  isActive?: boolean | null
-  isActive_not?: boolean | null
-  project?: ProjectWhereInput | null
-  language?: ProjectLngWhereInput | null
-}
-
 export interface ProjectContentWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface ProjectCreateInput {
   slug: string
   category: ProjectCategoryCreateOneWithoutProjectsInput
+  author: UserCreateOneWithoutProjectsInput
   album: ProjectAlbumCreateOneWithoutProjectInput
   contents?: ProjectContentCreateManyWithoutProjectInput | null
+  tags?: ProjectTagCreateManyInput | null
+}
+
+export interface ProjectCreateManyWithoutAuthorInput {
+  create?: ProjectCreateWithoutAuthorInput[] | null
+  connect?: ProjectWhereUniqueInput[] | null
 }
 
 export interface ProjectCreateManyWithoutCategoryInput {
@@ -2732,10 +2460,20 @@ export interface ProjectCreateManyWithoutCategoryInput {
   connect?: ProjectWhereUniqueInput[] | null
 }
 
-export interface ProjectCreateWithoutCategoryInput {
+export interface ProjectCreateWithoutAuthorInput {
   slug: string
+  category: ProjectCategoryCreateOneWithoutProjectsInput
   album: ProjectAlbumCreateOneWithoutProjectInput
   contents?: ProjectContentCreateManyWithoutProjectInput | null
+  tags?: ProjectTagCreateManyInput | null
+}
+
+export interface ProjectCreateWithoutCategoryInput {
+  slug: string
+  author: UserCreateOneWithoutProjectsInput
+  album: ProjectAlbumCreateOneWithoutProjectInput
+  contents?: ProjectContentCreateManyWithoutProjectInput | null
+  tags?: ProjectTagCreateManyInput | null
 }
 
 export interface ProjectImageContentCreateOneWithoutImageInput {
@@ -2744,20 +2482,20 @@ export interface ProjectImageContentCreateOneWithoutImageInput {
 }
 
 export interface ProjectImageContentCreateWithoutImageInput {
-  alt: string
   language: ProjectImageLngCreateOneWithoutImagesInput
+  alt: string
 }
 
 export interface ProjectImageContentUpdateOneRequiredWithoutImageInput {
   create?: ProjectImageContentCreateWithoutImageInput | null
-  connect?: ProjectImageContentWhereUniqueInput | null
   update?: ProjectImageContentUpdateWithoutImageDataInput | null
   upsert?: ProjectImageContentUpsertWithoutImageInput | null
+  connect?: ProjectImageContentWhereUniqueInput | null
 }
 
 export interface ProjectImageContentUpdateWithoutImageDataInput {
-  alt?: string | null
   language?: ProjectImageLngUpdateOneRequiredWithoutImagesInput | null
+  alt?: string | null
 }
 
 export interface ProjectImageContentUpsertWithoutImageInput {
@@ -2765,61 +2503,8 @@ export interface ProjectImageContentUpsertWithoutImageInput {
   create: ProjectImageContentCreateWithoutImageInput
 }
 
-export interface ProjectImageContentWhereInput {
-  AND?: ProjectImageContentWhereInput[] | null
-  OR?: ProjectImageContentWhereInput[] | null
-  NOT?: ProjectImageContentWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  alt?: string | null
-  alt_not?: string | null
-  alt_in?: string[] | null
-  alt_not_in?: string[] | null
-  alt_lt?: string | null
-  alt_lte?: string | null
-  alt_gt?: string | null
-  alt_gte?: string | null
-  alt_contains?: string | null
-  alt_not_contains?: string | null
-  alt_starts_with?: string | null
-  alt_not_starts_with?: string | null
-  alt_ends_with?: string | null
-  alt_not_ends_with?: string | null
-  image?: ProjectImageWhereInput | null
-  language?: ProjectImageLngWhereInput | null
-}
-
 export interface ProjectImageContentWhereUniqueInput {
-  id?: string | null
-  alt?: string | null
+  id?: any | null
 }
 
 export interface ProjectImageCreateManyWithoutAlbumInput {
@@ -2845,9 +2530,9 @@ export interface ProjectImageLngCreateWithoutImagesInput {
 
 export interface ProjectImageLngUpdateOneRequiredWithoutImagesInput {
   create?: ProjectImageLngCreateWithoutImagesInput | null
-  connect?: ProjectImageLngWhereUniqueInput | null
   update?: ProjectImageLngUpdateWithoutImagesDataInput | null
   upsert?: ProjectImageLngUpsertWithoutImagesInput | null
+  connect?: ProjectImageLngWhereUniqueInput | null
 }
 
 export interface ProjectImageLngUpdateWithoutImagesDataInput {
@@ -2860,81 +2545,27 @@ export interface ProjectImageLngUpsertWithoutImagesInput {
   create: ProjectImageLngCreateWithoutImagesInput
 }
 
-export interface ProjectImageLngWhereInput {
-  AND?: ProjectImageLngWhereInput[] | null
-  OR?: ProjectImageLngWhereInput[] | null
-  NOT?: ProjectImageLngWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  country?: string | null
-  country_not?: string | null
-  country_in?: string[] | null
-  country_not_in?: string[] | null
-  country_lt?: string | null
-  country_lte?: string | null
-  country_gt?: string | null
-  country_gte?: string | null
-  country_contains?: string | null
-  country_not_contains?: string | null
-  country_starts_with?: string | null
-  country_not_starts_with?: string | null
-  country_ends_with?: string | null
-  country_not_ends_with?: string | null
-  locale?: string | null
-  locale_not?: string | null
-  locale_in?: string[] | null
-  locale_not_in?: string[] | null
-  locale_lt?: string | null
-  locale_lte?: string | null
-  locale_gt?: string | null
-  locale_gte?: string | null
-  locale_contains?: string | null
-  locale_not_contains?: string | null
-  locale_starts_with?: string | null
-  locale_not_starts_with?: string | null
-  locale_ends_with?: string | null
-  locale_not_ends_with?: string | null
-  images_every?: ProjectImageContentWhereInput | null
-  images_some?: ProjectImageContentWhereInput | null
-  images_none?: ProjectImageContentWhereInput | null
-}
-
 export interface ProjectImageLngWhereUniqueInput {
-  id?: string | null
+  id?: any | null
   country?: string | null
   locale?: string | null
 }
 
 export interface ProjectImageScalarWhereInput {
-  AND?: ProjectImageScalarWhereInput[] | null
-  OR?: ProjectImageScalarWhereInput[] | null
-  NOT?: ProjectImageScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -2979,6 +2610,9 @@ export interface ProjectImageScalarWhereInput {
   src_not_starts_with?: string | null
   src_ends_with?: string | null
   src_not_ends_with?: string | null
+  AND?: ProjectImageScalarWhereInput[] | null
+  OR?: ProjectImageScalarWhereInput[] | null
+  NOT?: ProjectImageScalarWhereInput[] | null
 }
 
 export interface ProjectImageUpdateManyDataInput {
@@ -2993,13 +2627,14 @@ export interface ProjectImageUpdateManyWithWhereNestedInput {
 
 export interface ProjectImageUpdateManyWithoutAlbumInput {
   create?: ProjectImageCreateWithoutAlbumInput[] | null
-  connect?: ProjectImageWhereUniqueInput[] | null
-  disconnect?: ProjectImageWhereUniqueInput[] | null
   delete?: ProjectImageWhereUniqueInput[] | null
+  connect?: ProjectImageWhereUniqueInput[] | null
+  set?: ProjectImageWhereUniqueInput[] | null
+  disconnect?: ProjectImageWhereUniqueInput[] | null
   update?: ProjectImageUpdateWithWhereUniqueWithoutAlbumInput[] | null
-  updateMany?: ProjectImageUpdateManyWithWhereNestedInput[] | null
-  deleteMany?: ProjectImageScalarWhereInput[] | null
   upsert?: ProjectImageUpsertWithWhereUniqueWithoutAlbumInput[] | null
+  deleteMany?: ProjectImageScalarWhereInput[] | null
+  updateMany?: ProjectImageUpdateManyWithWhereNestedInput[] | null
 }
 
 export interface ProjectImageUpdateWithWhereUniqueWithoutAlbumInput {
@@ -3019,74 +2654,8 @@ export interface ProjectImageUpsertWithWhereUniqueWithoutAlbumInput {
   create: ProjectImageCreateWithoutAlbumInput
 }
 
-export interface ProjectImageWhereInput {
-  AND?: ProjectImageWhereInput[] | null
-  OR?: ProjectImageWhereInput[] | null
-  NOT?: ProjectImageWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
-  publicId?: string | null
-  publicId_not?: string | null
-  publicId_in?: string[] | null
-  publicId_not_in?: string[] | null
-  publicId_lt?: string | null
-  publicId_lte?: string | null
-  publicId_gt?: string | null
-  publicId_gte?: string | null
-  publicId_contains?: string | null
-  publicId_not_contains?: string | null
-  publicId_starts_with?: string | null
-  publicId_not_starts_with?: string | null
-  publicId_ends_with?: string | null
-  publicId_not_ends_with?: string | null
-  src?: string | null
-  src_not?: string | null
-  src_in?: string[] | null
-  src_not_in?: string[] | null
-  src_lt?: string | null
-  src_lte?: string | null
-  src_gt?: string | null
-  src_gte?: string | null
-  src_contains?: string | null
-  src_not_contains?: string | null
-  src_starts_with?: string | null
-  src_not_starts_with?: string | null
-  src_ends_with?: string | null
-  src_not_ends_with?: string | null
-  album?: ProjectAlbumWhereInput | null
-  contents?: ProjectImageContentWhereInput | null
-}
-
 export interface ProjectImageWhereUniqueInput {
-  id?: string | null
+  id?: any | null
 }
 
 export interface ProjectLngCreateOneWithoutProjectsInput {
@@ -3101,9 +2670,9 @@ export interface ProjectLngCreateWithoutProjectsInput {
 
 export interface ProjectLngUpdateOneRequiredWithoutProjectsInput {
   create?: ProjectLngCreateWithoutProjectsInput | null
-  connect?: ProjectLngWhereUniqueInput | null
   update?: ProjectLngUpdateWithoutProjectsDataInput | null
   upsert?: ProjectLngUpsertWithoutProjectsInput | null
+  connect?: ProjectLngWhereUniqueInput | null
 }
 
 export interface ProjectLngUpdateWithoutProjectsDataInput {
@@ -3116,81 +2685,27 @@ export interface ProjectLngUpsertWithoutProjectsInput {
   create: ProjectLngCreateWithoutProjectsInput
 }
 
-export interface ProjectLngWhereInput {
-  AND?: ProjectLngWhereInput[] | null
-  OR?: ProjectLngWhereInput[] | null
-  NOT?: ProjectLngWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  country?: string | null
-  country_not?: string | null
-  country_in?: string[] | null
-  country_not_in?: string[] | null
-  country_lt?: string | null
-  country_lte?: string | null
-  country_gt?: string | null
-  country_gte?: string | null
-  country_contains?: string | null
-  country_not_contains?: string | null
-  country_starts_with?: string | null
-  country_not_starts_with?: string | null
-  country_ends_with?: string | null
-  country_not_ends_with?: string | null
-  locale?: string | null
-  locale_not?: string | null
-  locale_in?: string[] | null
-  locale_not_in?: string[] | null
-  locale_lt?: string | null
-  locale_lte?: string | null
-  locale_gt?: string | null
-  locale_gte?: string | null
-  locale_contains?: string | null
-  locale_not_contains?: string | null
-  locale_starts_with?: string | null
-  locale_not_starts_with?: string | null
-  locale_ends_with?: string | null
-  locale_not_ends_with?: string | null
-  projects_every?: ProjectContentWhereInput | null
-  projects_some?: ProjectContentWhereInput | null
-  projects_none?: ProjectContentWhereInput | null
-}
-
 export interface ProjectLngWhereUniqueInput {
-  id?: string | null
+  id?: any | null
   country?: string | null
   locale?: string | null
 }
 
 export interface ProjectScalarWhereInput {
-  AND?: ProjectScalarWhereInput[] | null
-  OR?: ProjectScalarWhereInput[] | null
-  NOT?: ProjectScalarWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -3221,13 +2736,198 @@ export interface ProjectScalarWhereInput {
   slug_not_starts_with?: string | null
   slug_ends_with?: string | null
   slug_not_ends_with?: string | null
+  AND?: ProjectScalarWhereInput[] | null
+  OR?: ProjectScalarWhereInput[] | null
+  NOT?: ProjectScalarWhereInput[] | null
+}
+
+export interface ProjectTagContentCreateOneWithoutTagInput {
+  create?: ProjectTagContentCreateWithoutTagInput | null
+  connect?: ProjectTagContentWhereUniqueInput | null
+}
+
+export interface ProjectTagContentCreateWithoutTagInput {
+  title?: string | null
+}
+
+export interface ProjectTagContentUpdateOneRequiredWithoutTagInput {
+  create?: ProjectTagContentCreateWithoutTagInput | null
+  update?: ProjectTagContentUpdateWithoutTagDataInput | null
+  upsert?: ProjectTagContentUpsertWithoutTagInput | null
+  connect?: ProjectTagContentWhereUniqueInput | null
+}
+
+export interface ProjectTagContentUpdateWithoutTagDataInput {
+  title?: string | null
+}
+
+export interface ProjectTagContentUpsertWithoutTagInput {
+  update: ProjectTagContentUpdateWithoutTagDataInput
+  create: ProjectTagContentCreateWithoutTagInput
+}
+
+export interface ProjectTagContentWhereUniqueInput {
+  id?: any | null
+}
+
+export interface ProjectTagCreateInput {
+  language: ProjectTagLngCreateOneWithoutTagsInput
+  contents: ProjectTagContentCreateOneWithoutTagInput
+  title: string
+  color?: string | null
+}
+
+export interface ProjectTagCreateManyInput {
+  create?: ProjectTagCreateInput[] | null
+  connect?: ProjectTagWhereUniqueInput[] | null
+}
+
+export interface ProjectTagLngCreateOneWithoutTagsInput {
+  create?: ProjectTagLngCreateWithoutTagsInput | null
+  connect?: ProjectTagLngWhereUniqueInput | null
+}
+
+export interface ProjectTagLngCreateWithoutTagsInput {
+  country: string
+  locale: string
+}
+
+export interface ProjectTagLngUpdateOneRequiredWithoutTagsInput {
+  create?: ProjectTagLngCreateWithoutTagsInput | null
+  update?: ProjectTagLngUpdateWithoutTagsDataInput | null
+  upsert?: ProjectTagLngUpsertWithoutTagsInput | null
+  connect?: ProjectTagLngWhereUniqueInput | null
+}
+
+export interface ProjectTagLngUpdateWithoutTagsDataInput {
+  country?: string | null
+  locale?: string | null
+}
+
+export interface ProjectTagLngUpsertWithoutTagsInput {
+  update: ProjectTagLngUpdateWithoutTagsDataInput
+  create: ProjectTagLngCreateWithoutTagsInput
+}
+
+export interface ProjectTagLngWhereUniqueInput {
+  id?: any | null
+}
+
+export interface ProjectTagScalarWhereInput {
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
+  createdAt?: any | null
+  createdAt_not?: any | null
+  createdAt_in?: any[] | null
+  createdAt_not_in?: any[] | null
+  createdAt_lt?: any | null
+  createdAt_lte?: any | null
+  createdAt_gt?: any | null
+  createdAt_gte?: any | null
+  updatedAt?: any | null
+  updatedAt_not?: any | null
+  updatedAt_in?: any[] | null
+  updatedAt_not_in?: any[] | null
+  updatedAt_lt?: any | null
+  updatedAt_lte?: any | null
+  updatedAt_gt?: any | null
+  updatedAt_gte?: any | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[] | null
+  title_not_in?: string[] | null
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  color?: string | null
+  color_not?: string | null
+  color_in?: string[] | null
+  color_not_in?: string[] | null
+  color_lt?: string | null
+  color_lte?: string | null
+  color_gt?: string | null
+  color_gte?: string | null
+  color_contains?: string | null
+  color_not_contains?: string | null
+  color_starts_with?: string | null
+  color_not_starts_with?: string | null
+  color_ends_with?: string | null
+  color_not_ends_with?: string | null
+  AND?: ProjectTagScalarWhereInput[] | null
+  OR?: ProjectTagScalarWhereInput[] | null
+  NOT?: ProjectTagScalarWhereInput[] | null
+}
+
+export interface ProjectTagUpdateDataInput {
+  language?: ProjectTagLngUpdateOneRequiredWithoutTagsInput | null
+  contents?: ProjectTagContentUpdateOneRequiredWithoutTagInput | null
+  title?: string | null
+  color?: string | null
+}
+
+export interface ProjectTagUpdateManyDataInput {
+  title?: string | null
+  color?: string | null
+}
+
+export interface ProjectTagUpdateManyInput {
+  create?: ProjectTagCreateInput[] | null
+  update?: ProjectTagUpdateWithWhereUniqueNestedInput[] | null
+  upsert?: ProjectTagUpsertWithWhereUniqueNestedInput[] | null
+  delete?: ProjectTagWhereUniqueInput[] | null
+  connect?: ProjectTagWhereUniqueInput[] | null
+  set?: ProjectTagWhereUniqueInput[] | null
+  disconnect?: ProjectTagWhereUniqueInput[] | null
+  deleteMany?: ProjectTagScalarWhereInput[] | null
+  updateMany?: ProjectTagUpdateManyWithWhereNestedInput[] | null
+}
+
+export interface ProjectTagUpdateManyWithWhereNestedInput {
+  where: ProjectTagScalarWhereInput
+  data: ProjectTagUpdateManyDataInput
+}
+
+export interface ProjectTagUpdateWithWhereUniqueNestedInput {
+  where: ProjectTagWhereUniqueInput
+  data: ProjectTagUpdateDataInput
+}
+
+export interface ProjectTagUpsertWithWhereUniqueNestedInput {
+  where: ProjectTagWhereUniqueInput
+  update: ProjectTagUpdateDataInput
+  create: ProjectTagCreateInput
+}
+
+export interface ProjectTagWhereUniqueInput {
+  id?: any | null
 }
 
 export interface ProjectUpdateInput {
   slug?: string | null
   category?: ProjectCategoryUpdateOneRequiredWithoutProjectsInput | null
+  author?: UserUpdateOneRequiredWithoutProjectsInput | null
   album?: ProjectAlbumUpdateOneRequiredWithoutProjectInput | null
   contents?: ProjectContentUpdateManyWithoutProjectInput | null
+  tags?: ProjectTagUpdateManyInput | null
 }
 
 export interface ProjectUpdateManyDataInput {
@@ -3239,15 +2939,33 @@ export interface ProjectUpdateManyWithWhereNestedInput {
   data: ProjectUpdateManyDataInput
 }
 
+export interface ProjectUpdateManyWithoutAuthorInput {
+  create?: ProjectCreateWithoutAuthorInput[] | null
+  delete?: ProjectWhereUniqueInput[] | null
+  connect?: ProjectWhereUniqueInput[] | null
+  set?: ProjectWhereUniqueInput[] | null
+  disconnect?: ProjectWhereUniqueInput[] | null
+  update?: ProjectUpdateWithWhereUniqueWithoutAuthorInput[] | null
+  upsert?: ProjectUpsertWithWhereUniqueWithoutAuthorInput[] | null
+  deleteMany?: ProjectScalarWhereInput[] | null
+  updateMany?: ProjectUpdateManyWithWhereNestedInput[] | null
+}
+
 export interface ProjectUpdateManyWithoutCategoryInput {
   create?: ProjectCreateWithoutCategoryInput[] | null
-  connect?: ProjectWhereUniqueInput[] | null
-  disconnect?: ProjectWhereUniqueInput[] | null
   delete?: ProjectWhereUniqueInput[] | null
+  connect?: ProjectWhereUniqueInput[] | null
+  set?: ProjectWhereUniqueInput[] | null
+  disconnect?: ProjectWhereUniqueInput[] | null
   update?: ProjectUpdateWithWhereUniqueWithoutCategoryInput[] | null
-  updateMany?: ProjectUpdateManyWithWhereNestedInput[] | null
-  deleteMany?: ProjectScalarWhereInput[] | null
   upsert?: ProjectUpsertWithWhereUniqueWithoutCategoryInput[] | null
+  deleteMany?: ProjectScalarWhereInput[] | null
+  updateMany?: ProjectUpdateManyWithWhereNestedInput[] | null
+}
+
+export interface ProjectUpdateWithWhereUniqueWithoutAuthorInput {
+  where: ProjectWhereUniqueInput
+  data: ProjectUpdateWithoutAuthorDataInput
 }
 
 export interface ProjectUpdateWithWhereUniqueWithoutCategoryInput {
@@ -3255,10 +2973,26 @@ export interface ProjectUpdateWithWhereUniqueWithoutCategoryInput {
   data: ProjectUpdateWithoutCategoryDataInput
 }
 
-export interface ProjectUpdateWithoutCategoryDataInput {
+export interface ProjectUpdateWithoutAuthorDataInput {
   slug?: string | null
+  category?: ProjectCategoryUpdateOneRequiredWithoutProjectsInput | null
   album?: ProjectAlbumUpdateOneRequiredWithoutProjectInput | null
   contents?: ProjectContentUpdateManyWithoutProjectInput | null
+  tags?: ProjectTagUpdateManyInput | null
+}
+
+export interface ProjectUpdateWithoutCategoryDataInput {
+  slug?: string | null
+  author?: UserUpdateOneRequiredWithoutProjectsInput | null
+  album?: ProjectAlbumUpdateOneRequiredWithoutProjectInput | null
+  contents?: ProjectContentUpdateManyWithoutProjectInput | null
+  tags?: ProjectTagUpdateManyInput | null
+}
+
+export interface ProjectUpsertWithWhereUniqueWithoutAuthorInput {
+  where: ProjectWhereUniqueInput
+  update: ProjectUpdateWithoutAuthorDataInput
+  create: ProjectCreateWithoutAuthorInput
 }
 
 export interface ProjectUpsertWithWhereUniqueWithoutCategoryInput {
@@ -3267,64 +3001,14 @@ export interface ProjectUpsertWithWhereUniqueWithoutCategoryInput {
   create: ProjectCreateWithoutCategoryInput
 }
 
-export interface ProjectWhereInput {
-  AND?: ProjectWhereInput[] | null
-  OR?: ProjectWhereInput[] | null
-  NOT?: ProjectWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  createdAt?: any | null
-  createdAt_not?: any | null
-  createdAt_in?: any[] | null
-  createdAt_not_in?: any[] | null
-  createdAt_lt?: any | null
-  createdAt_lte?: any | null
-  createdAt_gt?: any | null
-  createdAt_gte?: any | null
-  updatedAt?: any | null
-  updatedAt_not?: any | null
-  updatedAt_in?: any[] | null
-  updatedAt_not_in?: any[] | null
-  updatedAt_lt?: any | null
-  updatedAt_lte?: any | null
-  updatedAt_gt?: any | null
-  updatedAt_gte?: any | null
+export interface ProjectWhereUniqueInput {
+  id?: any | null
   slug?: string | null
-  slug_not?: string | null
-  slug_in?: string[] | null
-  slug_not_in?: string[] | null
-  slug_lt?: string | null
-  slug_lte?: string | null
-  slug_gt?: string | null
-  slug_gte?: string | null
-  slug_contains?: string | null
-  slug_not_contains?: string | null
-  slug_starts_with?: string | null
-  slug_not_starts_with?: string | null
-  slug_ends_with?: string | null
-  slug_not_ends_with?: string | null
-  category?: ProjectCategoryWhereInput | null
-  album?: ProjectAlbumWhereInput | null
-  contents_every?: ProjectContentWhereInput | null
-  contents_some?: ProjectContentWhereInput | null
-  contents_none?: ProjectContentWhereInput | null
 }
 
-export interface ProjectWhereUniqueInput {
-  id?: string | null
-  slug?: string | null
+export interface UserCreateManyWithoutPostLikesInput {
+  create?: UserCreateWithoutPostLikesInput[] | null
+  connect?: UserWhereUniqueInput[] | null
 }
 
 export interface UserCreateOneWithoutCommentsInput {
@@ -3337,94 +3021,70 @@ export interface UserCreateOneWithoutPostsInput {
   connect?: UserWhereUniqueInput | null
 }
 
-export interface UserCreateWithoutCommentsInput {
-  role?: Role | null
-  name: string
-  email?: string | null
-  password: string
-  avatar?: AvatarCreateOneInput | null
-  posts?: PostCreateManyWithoutAuthorInput | null
+export interface UserCreateOneWithoutProjectsInput {
+  create?: UserCreateWithoutProjectsInput | null
+  connect?: UserWhereUniqueInput | null
 }
 
-export interface UserCreateWithoutPostsInput {
-  role?: Role | null
+export interface UserCreateWithoutCommentsInput {
   name: string
   email?: string | null
   password: string
-  avatar?: AvatarCreateOneInput | null
+  role?: Role | null
+  profile?: ProfileCreateOneWithoutUserInput | null
+  posts?: PostCreateManyWithoutAuthorInput | null
+  postLikes?: PostCreateManyWithoutLikedByInput | null
+  projects?: ProjectCreateManyWithoutAuthorInput | null
+}
+
+export interface UserCreateWithoutPostLikesInput {
+  name: string
+  email?: string | null
+  password: string
+  role?: Role | null
+  profile?: ProfileCreateOneWithoutUserInput | null
+  posts?: PostCreateManyWithoutAuthorInput | null
+  projects?: ProjectCreateManyWithoutAuthorInput | null
   comments?: CommentCreateManyWithoutAuthorInput | null
 }
 
-export interface UserUpdateInput {
-  role?: Role | null
-  name?: string | null
+export interface UserCreateWithoutPostsInput {
+  name: string
   email?: string | null
-  password?: string | null
-  avatar?: AvatarUpdateOneInput | null
-  posts?: PostUpdateManyWithoutAuthorInput | null
-  comments?: CommentUpdateManyWithoutAuthorInput | null
-}
-
-export interface UserUpdateOneRequiredWithoutCommentsInput {
-  create?: UserCreateWithoutCommentsInput | null
-  connect?: UserWhereUniqueInput | null
-  update?: UserUpdateWithoutCommentsDataInput | null
-  upsert?: UserUpsertWithoutCommentsInput | null
-}
-
-export interface UserUpdateOneRequiredWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput | null
-  connect?: UserWhereUniqueInput | null
-  update?: UserUpdateWithoutPostsDataInput | null
-  upsert?: UserUpsertWithoutPostsInput | null
-}
-
-export interface UserUpdateWithoutCommentsDataInput {
+  password: string
   role?: Role | null
-  name?: string | null
-  email?: string | null
-  password?: string | null
-  avatar?: AvatarUpdateOneInput | null
-  posts?: PostUpdateManyWithoutAuthorInput | null
+  profile?: ProfileCreateOneWithoutUserInput | null
+  postLikes?: PostCreateManyWithoutLikedByInput | null
+  projects?: ProjectCreateManyWithoutAuthorInput | null
+  comments?: CommentCreateManyWithoutAuthorInput | null
 }
 
-export interface UserUpdateWithoutPostsDataInput {
+export interface UserCreateWithoutProjectsInput {
+  name: string
+  email?: string | null
+  password: string
   role?: Role | null
-  name?: string | null
-  email?: string | null
-  password?: string | null
-  avatar?: AvatarUpdateOneInput | null
-  comments?: CommentUpdateManyWithoutAuthorInput | null
+  profile?: ProfileCreateOneWithoutUserInput | null
+  posts?: PostCreateManyWithoutAuthorInput | null
+  postLikes?: PostCreateManyWithoutLikedByInput | null
+  comments?: CommentCreateManyWithoutAuthorInput | null
 }
 
-export interface UserUpsertWithoutCommentsInput {
-  update: UserUpdateWithoutCommentsDataInput
-  create: UserCreateWithoutCommentsInput
-}
-
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput
-  create: UserCreateWithoutPostsInput
-}
-
-export interface UserWhereInput {
-  AND?: UserWhereInput[] | null
-  OR?: UserWhereInput[] | null
-  NOT?: UserWhereInput[] | null
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[] | null
-  id_not_in?: string[] | null
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
+export interface UserScalarWhereInput {
+  id?: any | null
+  id_not?: any | null
+  id_in?: any[] | null
+  id_not_in?: any[] | null
+  id_lt?: any | null
+  id_lte?: any | null
+  id_gt?: any | null
+  id_gte?: any | null
+  id_contains?: any | null
+  id_not_contains?: any | null
+  id_starts_with?: any | null
+  id_not_starts_with?: any | null
+  id_ends_with?: any | null
+  id_not_ends_with?: any | null
   createdAt?: any | null
   createdAt_not?: any | null
   createdAt_in?: any[] | null
@@ -3441,10 +3101,6 @@ export interface UserWhereInput {
   updatedAt_lte?: any | null
   updatedAt_gt?: any | null
   updatedAt_gte?: any | null
-  role?: Role | null
-  role_not?: Role | null
-  role_in?: Role[] | null
-  role_not_in?: Role[] | null
   name?: string | null
   name_not?: string | null
   name_in?: string[] | null
@@ -3487,17 +3143,144 @@ export interface UserWhereInput {
   password_not_starts_with?: string | null
   password_ends_with?: string | null
   password_not_ends_with?: string | null
-  avatar?: AvatarWhereInput | null
-  posts_every?: PostWhereInput | null
-  posts_some?: PostWhereInput | null
-  posts_none?: PostWhereInput | null
-  comments_every?: CommentWhereInput | null
-  comments_some?: CommentWhereInput | null
-  comments_none?: CommentWhereInput | null
+  role?: Role | null
+  role_not?: Role | null
+  role_in?: Role[] | null
+  role_not_in?: Role[] | null
+  AND?: UserScalarWhereInput[] | null
+  OR?: UserScalarWhereInput[] | null
+  NOT?: UserScalarWhereInput[] | null
+}
+
+export interface UserUpdateInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  role?: Role | null
+  profile?: ProfileUpdateOneWithoutUserInput | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  postLikes?: PostUpdateManyWithoutLikedByInput | null
+  projects?: ProjectUpdateManyWithoutAuthorInput | null
+  comments?: CommentUpdateManyWithoutAuthorInput | null
+}
+
+export interface UserUpdateManyDataInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  role?: Role | null
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput
+  data: UserUpdateManyDataInput
+}
+
+export interface UserUpdateManyWithoutPostLikesInput {
+  create?: UserCreateWithoutPostLikesInput[] | null
+  delete?: UserWhereUniqueInput[] | null
+  connect?: UserWhereUniqueInput[] | null
+  set?: UserWhereUniqueInput[] | null
+  disconnect?: UserWhereUniqueInput[] | null
+  update?: UserUpdateWithWhereUniqueWithoutPostLikesInput[] | null
+  upsert?: UserUpsertWithWhereUniqueWithoutPostLikesInput[] | null
+  deleteMany?: UserScalarWhereInput[] | null
+  updateMany?: UserUpdateManyWithWhereNestedInput[] | null
+}
+
+export interface UserUpdateOneRequiredWithoutCommentsInput {
+  create?: UserCreateWithoutCommentsInput | null
+  update?: UserUpdateWithoutCommentsDataInput | null
+  upsert?: UserUpsertWithoutCommentsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+
+export interface UserUpdateOneRequiredWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput | null
+  update?: UserUpdateWithoutPostsDataInput | null
+  upsert?: UserUpsertWithoutPostsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+
+export interface UserUpdateOneRequiredWithoutProjectsInput {
+  create?: UserCreateWithoutProjectsInput | null
+  update?: UserUpdateWithoutProjectsDataInput | null
+  upsert?: UserUpsertWithoutProjectsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+
+export interface UserUpdateWithWhereUniqueWithoutPostLikesInput {
+  where: UserWhereUniqueInput
+  data: UserUpdateWithoutPostLikesDataInput
+}
+
+export interface UserUpdateWithoutCommentsDataInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  role?: Role | null
+  profile?: ProfileUpdateOneWithoutUserInput | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  postLikes?: PostUpdateManyWithoutLikedByInput | null
+  projects?: ProjectUpdateManyWithoutAuthorInput | null
+}
+
+export interface UserUpdateWithoutPostLikesDataInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  role?: Role | null
+  profile?: ProfileUpdateOneWithoutUserInput | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  projects?: ProjectUpdateManyWithoutAuthorInput | null
+  comments?: CommentUpdateManyWithoutAuthorInput | null
+}
+
+export interface UserUpdateWithoutPostsDataInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  role?: Role | null
+  profile?: ProfileUpdateOneWithoutUserInput | null
+  postLikes?: PostUpdateManyWithoutLikedByInput | null
+  projects?: ProjectUpdateManyWithoutAuthorInput | null
+  comments?: CommentUpdateManyWithoutAuthorInput | null
+}
+
+export interface UserUpdateWithoutProjectsDataInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  role?: Role | null
+  profile?: ProfileUpdateOneWithoutUserInput | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  postLikes?: PostUpdateManyWithoutLikedByInput | null
+  comments?: CommentUpdateManyWithoutAuthorInput | null
+}
+
+export interface UserUpsertWithWhereUniqueWithoutPostLikesInput {
+  where: UserWhereUniqueInput
+  update: UserUpdateWithoutPostLikesDataInput
+  create: UserCreateWithoutPostLikesInput
+}
+
+export interface UserUpsertWithoutCommentsInput {
+  update: UserUpdateWithoutCommentsDataInput
+  create: UserCreateWithoutCommentsInput
+}
+
+export interface UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput
+  create: UserCreateWithoutPostsInput
+}
+
+export interface UserUpsertWithoutProjectsInput {
+  update: UserUpdateWithoutProjectsDataInput
+  create: UserCreateWithoutProjectsInput
 }
 
 export interface UserWhereUniqueInput {
-  id?: string | null
+  id?: any | null
   email?: string | null
 }
 

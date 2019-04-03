@@ -20,13 +20,18 @@ const projectUpdate = gql`
           }
         }
       }
+      tags {
+        contents {
+          title
+        }
+        color
+      }
       contents {
         language {
           country
         }
         title
-        description
-        tags
+        text
         metaTitle
         metaDescription
         isActive

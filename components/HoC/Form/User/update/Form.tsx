@@ -22,13 +22,14 @@ const createValuesFromProps: ({
   name,
   password,
   email,
-  avatar
-}: UserUpdateInput) => UserUpdateInput = ({ id, name, email, avatar }) => {
+  profile
+}: UserUpdateInput) => UserUpdateInput = ({ id, name, email, profile }) => {
   return {
-    avatar,
     email,
     id,
     name,
+    profile,
+    // tslint:disable-next-line: object-literal-sort-keys
     password: ''
   }
 }
@@ -38,16 +39,16 @@ const UpdateUser: FunctionComponent<IUpdateUserProps> = (
 ) => {
   const {
     submitFn,
-    user: { id, name, email, avatar },
+    user: { id, name, email, profile },
     t
   } = props
 
   const [initialValues, setInitialValues] = useState(
     createValuesFromProps({
-      avatar,
       email,
       id,
-      name
+      name,
+      profile
     })
   )
 
@@ -58,11 +59,11 @@ const UpdateUser: FunctionComponent<IUpdateUserProps> = (
     formikActions.setSubmitting(true)
 
     // tslint:disable-next-line: no-shadowed-variable
-    const { id, name, email, password, avatar } = values
+    const { id, name, email, password, profile } = values
 
     const submitAvatar = {
-      publicId: `${avatar && avatar.publicId}`,
-      src: `${avatar && avatar.src}`
+      publicId: `${profile.avatar && profile.avatar.publicId}`,
+      src: `${profile.avatar && profile.avatar.src}`
     }
 
     await submitFn({
@@ -72,16 +73,14 @@ const UpdateUser: FunctionComponent<IUpdateUserProps> = (
           name,
           password,
           // tslint:disable-next-line: object-literal-sort-keys
-          avatar:
-            avatar && initialValues.avatar && initialValues.avatar.id !== ''
-              ? {
-                  update: submitAvatar
-                }
-              : avatar
-              ? {
-                  create: submitAvatar
-                }
-              : null
+          profile: {
+            update: {
+              avatar: {
+                update: submitAvatar
+              },
+              bio: ''
+            }
+          }
         },
         where: {
           id
@@ -91,19 +90,19 @@ const UpdateUser: FunctionComponent<IUpdateUserProps> = (
 
     await setInitialValues(
       createValuesFromProps({
-        avatar,
         email,
         id,
-        name
+        name,
+        profile
       })
     )
 
     await formikActions.resetForm(
       createValuesFromProps({
-        avatar,
         email,
         id,
-        name
+        name,
+        profile
       })
     )
 

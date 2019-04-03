@@ -14,14 +14,16 @@ const useStyles = makeStyles((/* theme: Theme */) => ({
 }))
 
 const UserAccount: React.FunctionComponent<IUserAccount> = ({
-  user: { id, email, name, role, avatar = { publicId: '', src: '' } }
+  user: { id, email, name, role, profile }
 }) => {
+  const { bio, avatar } = profile!
+
   let imageSrc = ''
   let imagePublicId = ''
 
   if (avatar) {
-    imageSrc = avatar.src
-    imagePublicId = avatar.publicId
+    imageSrc = avatar.src ? avatar.src : 'placeholder'
+    imagePublicId = avatar.publicId ? avatar.publicId : 'publicId placeholder'
   }
 
   const classes = useStyles()
@@ -33,6 +35,7 @@ const UserAccount: React.FunctionComponent<IUserAccount> = ({
       </Typography>
       <Typography>{email}</Typography>
       <img src={imageSrc} id={imagePublicId} alt={`${name} avatar`} />
+      <Typography>{bio}</Typography>
     </Paper>
   )
 }

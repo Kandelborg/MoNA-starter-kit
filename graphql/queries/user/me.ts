@@ -4,10 +4,13 @@ const me = gql`
   query Me {
     me {
       id
-      avatar {
-        id
-        publicId
-        src
+      profile {
+        bio
+        avatar {
+          id
+          publicId
+          src
+        }
       }
       role
       name

@@ -2,16 +2,18 @@ import gql from 'graphql-tag'
 
 const postsByIsPublished = gql`
   query PostsByIsPublished(
-    $isPublished: Boolean
+    $isPublished: Boolean!
     $orderBy: PostOrderByInput
     $first: Int
     $last: Int
     $skip: Int
     $after: String
+    $before: String
   ) {
     postsByIsPublished(
-      where: { isPublished: $isPublished }
+      isPublished: $isPublished
       orderBy: $orderBy
+      before: $before
       first: $first
       last: $last
       skip: $skip
@@ -25,23 +27,29 @@ const postsByIsPublished = gql`
         id
         name
         role
-        avatar {
-          id
-          src
-          publicId
-        }
+        #    avatar {
+        #      id
+        #      src
+        #      publicId
+        #    }
       }
       imageSrc
       isPublished
+      tags {
+        contents {
+          title
+        }
+        color
+      }
       contents {
         id
         language {
           country
         }
         title
-        description
+        text
         imageAlt
-        tags
+
         metaTitle
         metaDescription
       }

@@ -22,40 +22,36 @@ const router = express.Router({
 
 server.use(router)
 ;(async () => {
-  try {
-    await app.prepare()
+  await app.prepare()
 
-    server.set('strict routing', true)
-    server.set('case sensitive routing', true)
+  server.set('strict routing', true)
+  server.set('case sensitive routing', true)
 
-    // Get all the static & next specific files
-    server.get(/^\/(?!_next|static).*$/, (req, res) => handle(req, res))
+  // Get all the static & next specific files
+  server.get(/^\/(?!_next|static).*$/, (req, res) => handle(req, res))
 
-    /* Init Sitemap, Service Worker & robots.txt support */
-    sitemapSWAndRobots({ router, app })
+  /* Init Sitemap, Service Worker & robots.txt support */
+  sitemapSWAndRobots({ router, app })
 
-    /* Declare routes */
-    await routing(dev, router)
+  /* Declare routes */
+  await routing(dev, router)
 
-    server.use(nextI18NextMiddleware(nextI18n))
-    router.get('*', (req, res) => handle(req, res))
-    /* Start the server! */
-    await server.listen(config.common.PORT, (err: Error) => {
-      if (err) {
-        return err
-      }
+  server.use(nextI18NextMiddleware(nextI18n))
+  router.get('*', (req, res) => handle(req, res))
+  /* Start the server! */
+  await server.listen(config.common.PORT, (err: Error) => {
+    if (err) {
+      return err
+    }
 
-      return
-    })
-    // tslint:disable-next-line:no-console
-    console.info(
-      `> Frontend app listening on http://localhost:${config.common.PORT} (in ${
-        config.common.DEV ? 'dev' : 'production'
-      } mode)`
-    )
-  } catch (err) {
-    throw err
-  }
+    return
+  })
+  // tslint:disable-next-line:no-console
+  console.info(
+    `> Frontend app listening on http://localhost:${config.common.PORT} (in ${
+      config.common.DEV ? 'dev' : 'production'
+    } mode)`
+  )
 })()
 
 export default app

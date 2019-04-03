@@ -1,12 +1,12 @@
 import * as React from 'react'
 
-import { ProjectsAllVariables } from 'database-api'
+import { ProjectsVariables } from 'database-api'
 import { queries } from '../../../index'
 import AllProjectsQueryWrapper from './ProjectsAllQueryWrapper'
 
 /* export interface IProjectsAllProps {} */
 
-class ProjectsAllQuery extends React.PureComponent<ProjectsAllVariables> {
+class ProjectsAllQuery extends React.PureComponent<ProjectsVariables> {
   public render() {
     return (
       <>
@@ -25,12 +25,12 @@ class ProjectsAllQuery extends React.PureComponent<ProjectsAllVariables> {
             if (loading) return 'Loading...'
 
             if (data && !loading) {
-              const { projectsAll } = data
+              const { projects } = data
               // console.info(projectsAll);
 
               return (
                 <>
-                  {projectsAll.forEach((project) => {
+                  {projects.forEach((project) => {
                     if (project) {
                       return <p>{project.id}</p>
                     }

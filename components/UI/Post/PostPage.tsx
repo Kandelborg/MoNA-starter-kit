@@ -96,7 +96,7 @@ const PostPage: FunctionComponent<IPostCardProps> = (props) => {
       <CardContent>
         <img src={imageSrc} alt={displayedContent.imageAlt} />
         <Typography component="p" variant="body1">
-          {isPublished ? displayedContent.description : ''}
+          {isPublished ? displayedContent.text : ''}
         </Typography>
       </CardContent>
 

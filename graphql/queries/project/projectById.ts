@@ -2,16 +2,22 @@ import gql from 'graphql-tag'
 
 const projectById = gql`
   query ProjectById($id: ID!) {
-    projectById(where: { id: $id }) {
+    projectById(id: $id) {
       id
+      tags {
+        contents {
+          title
+        }
+        color
+      }
       contents {
         id
         language {
           country
         }
         title
-        description
-        tags
+        text
+
         metaTitle
         metaDescription
         isActive

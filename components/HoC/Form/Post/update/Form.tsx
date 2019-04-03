@@ -2,13 +2,11 @@ import { withNamespaces } from '@i18n'
 import { config } from '@util/settings'
 import {
   PostUpdate,
-  PostUpdate_postUpdate,
-  PostUpdate_postUpdate_contents,
-  PostUpdateVariables
+  PostUpdateInput,
+  PostUpdateVariables,
+  PostWhereUniqueInput
 } from 'database-api'
 import { Formik, FormikActions } from 'formik'
-import { Omit } from 'global'
-import { PostUpdateInput } from 'Post'
 import { FunctionComponent, useState } from 'react'
 import { MutationFn } from 'react-apollo'
 import { TranslateFn } from 'StatelessPage'
@@ -16,7 +14,7 @@ import PostUpdateFields from './Fields'
 import { postUpdateSchema } from './ValidationSchema'
 
 interface IUpdatePostProps {
-  post: Omit<PostUpdate_postUpdate, '__typename' | 'author'>
+  post: PostUpdateInput & PostWhereUniqueInput
   submitFn: MutationFn<PostUpdate, PostUpdateVariables>
   t: TranslateFn
 }
@@ -48,38 +46,30 @@ function finishContentsObjForEachLng(arr: any) {
 const createValuesFromProps: ({
   id,
   slug,
+  tags,
   imageSrc,
   isPublished,
   contents
-}: PostUpdateInput) => PostUpdateInput = ({
+}: PostUpdateInput & PostWhereUniqueInput) => PostUpdateInput &
+  PostWhereUniqueInput = ({
   id,
   slug,
   imageSrc,
+  tags,
   isPublished,
   contents
-}) => {
-  return {
-    contents,
-    id,
-    imageSrc,
-    isPublished,
-    slug
-  }
-}
+}) => ({
+  contents,
+  id,
+  imageSrc,
+  isPublished,
+  slug,
+  tags
+})
 
 const UpdatePost: FunctionComponent<IUpdatePostProps> = (props) => {
   const { submitFn, t, post } = props
-  const { id, slug, isPublished, imageSrc, contents } = post
-
-  const contentsArr: Array<
-    { tags: { set: string[] } } & Omit<PostUpdate_postUpdate_contents, 'tags'>
-  > = []
-
-  // tslint:disable-next-line: no-unused-expression
-  contents &&
-    contents.forEach(({ tags, ...rest }) =>
-      contentsArr.push({ tags: { set: [...tags] }, ...rest })
-    )
+  const { id, slug, isPublished, tags, imageSrc, contents } = post
 
   const [initialValues, setInitialValues] = useState(
     createValuesFromProps({
@@ -87,13 +77,14 @@ const UpdatePost: FunctionComponent<IUpdatePostProps> = (props) => {
       imageSrc,
       isPublished,
       slug,
+      tags,
       // tslint:disable-next-line: object-literal-sort-keys
-      contents: contentsArr
+      contents: contents!
     })
   )
 
   const submitHandler = async (
-    values: PostUpdateInput,
+    values: PostUpdateInput & { id?: string },
     formikActions: FormikActions<PostUpdateInput>
   ) => {
     formikActions.setSubmitting(true)
@@ -106,7 +97,8 @@ const UpdatePost: FunctionComponent<IUpdatePostProps> = (props) => {
           },
           imageSrc: values.imageSrc,
           isPublished: values.isPublished,
-          slug: values.slug
+          slug: values.slug,
+          tags: values.tags
         },
         where: {
           id: values.id
@@ -120,6 +112,7 @@ const UpdatePost: FunctionComponent<IUpdatePostProps> = (props) => {
         imageSrc,
         isPublished,
         slug,
+        tags,
         // tslint:disable-next-line: object-literal-sort-keys
         contents: contents!
       })
@@ -131,6 +124,7 @@ const UpdatePost: FunctionComponent<IUpdatePostProps> = (props) => {
         imageSrc,
         isPublished,
         slug,
+        tags,
         // tslint:disable-next-line: object-literal-sort-keys
         contents: contents!
       })

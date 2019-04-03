@@ -13,7 +13,7 @@ function removeServerFromDirname() {
 
 const sitemap = sm.createSitemap({
   cacheTime: 600000, // 600 sec - cache purge period
-  hostname: 'https://example.com/',
+  hostname: `${config.common.DOMAIN}/`,
   urls: undefined,
   xmlNs: undefined,
   xslUrl: undefined
