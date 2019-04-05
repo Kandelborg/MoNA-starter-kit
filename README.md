@@ -2,7 +2,7 @@
 
 > MoNA aka Material-UI (over) Next Apollo
 
-[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/Kandelborg/MoNA-starter-kit.svg?logo=circleci)](https://circleci.com/gh/Kandelborg/MoNA-starter-kit)
+[![CircleCI](https://circleci.com/gh/Kandelborg/MoNA-starter-kit.svg?style=svg)](https://circleci.com/gh/Kandelborg/MoNA-starter-kit)
 
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Kandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/Kandelborg/MoNA-starter-kit/maintainability)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/Kandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/Kandelborg/MoNA-starter-kit/issues)
