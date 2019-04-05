@@ -53,7 +53,7 @@ We have an official message board where the community chimes in with helpful adv
 Within the MoNA 'universe', there's three repositories
 
 - MoNA
-- Docs
+- Configuration
 - KATS
 
 #### Package Conventions

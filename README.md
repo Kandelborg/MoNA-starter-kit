@@ -2,31 +2,29 @@
 
 > MoNA aka Material-UI (over) Next Apollo
 
-[![License: MIT](https://img.shields.io/github/license/MathiasKandelborg/next-apollo-mui-starter.svg)](https://github.com/Kandelborg/next-apollo-mui-starter/blob/master/LICENSE)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/Kandelborg/MoNA-starter-kit.svg?logo=circleci)](https://circleci.com/gh/Kandelborg/MoNA-starter-kit)
 
-[![CircleCI (all branches)](https://img.shields.io/circleci/project/github/Kandelborg/MoNA-starter-kit.svg?logo=circleci?cacheSeconds=300)](https://circleci.com/gh/Kandelborg/MoNA-starter-kit)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate?cacheSeconds=10)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
-[![Code Climate issues](https://img.shields.io/codeclimate/issues/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate?cacheSeconds=10)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/issues)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/issues)
+
+[![License: MIT](https://img.shields.io/github/license/Kandelborg/MoNA-starter-kit.svg)](https://github.com/Kandelborg/MoNA-starter-kit/blob/master/LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-informational.svg)](http://commitizen.github.io/cz-cli/)
 
 MoNA _tries_ to follow best practices, be flexible and use the greatest tech & libraries.
+
+## Getting Started
 
 This is a fully-featured starter kit, which should enable fast, secure development of advanced applications.
 
 Everything is documented, automated, and as many practices as possible are followed.
 
-## Getting Started
-
-Go read [the documentation](https://kandelborg.github.io/Docs/)! Yes, you read correctly... This project has documentation, and a lot of it!
-Due to the nature of the project, a bit of initial configuring is needed to get started.
-
-For a proper setup, go to the [introduction document](/docs/introduction.md)
+Go read [the documentation](https://kandelborg.github.io/Docs/)! Yes, this project has documentation, and a lot of it!
 
 ## Features
 
-The project is made with a lot of functionality in mind.
+MoNA is made with a lot of functionality in mind.
 
 Here is the complete list of current features in MoNA:
 
@@ -82,7 +80,9 @@ Here is the complete list of current features in MoNA:
 > In order
 
 - [x] Documentation
+- [x] Roadmap
 - [x] A good settings configuration
+- [x] [A grade](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit) on maintainability and 0 issues
 - [ ] Great GraphQL wrappers
 - [ ] I18n everything
 - [ ] Reusable style definitions
@@ -94,7 +94,7 @@ Please read the [contributing document](/CONTRIBUTING.md)
 
 Feel free to open an issue or PR, contributions are very welcome!
 
-Don't worry about small things like code style or documentation - just get started by reading the [docs](/CONTRIBUTING.md) and we'll figure it out.
+Don't worry about small things like code style or documentation - get started by reading the [contributing](/CONTRIBUTING.md) and we'll figure it out.
 
 Some quick tips to get started contributing:
 
@@ -106,7 +106,7 @@ Some quick tips to get started contributing:
 
 - Mathias Wøbbe - _Initial work_ - [MathiasKandelborg](https://github.com/MathiasKandelborg)
 
-Also a big thanks to the [contributors](https://github.com/MathiasKandelborg/mona/contributors)
+Also a big thanks to the [contributors](https://github.com/Kandelborg/MoNA-starter-kit/contributors)
 
 ## License
 
