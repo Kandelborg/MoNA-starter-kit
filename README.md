@@ -4,8 +4,8 @@
 
 [![CircleCI (all branches)](https://img.shields.io/circleci/project/github/Kandelborg/MoNA-starter-kit.svg?logo=circleci)](https://circleci.com/gh/Kandelborg/MoNA-starter-kit)
 
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/maintainability)
-[![Code Climate issues](https://img.shields.io/codeclimate/issues/MathiasKandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/MathiasKandelborg/MoNA-starter-kit/issues)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/Kandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/Kandelborg/MoNA-starter-kit/maintainability)
+[![Code Climate issues](https://img.shields.io/codeclimate/issues/Kandelborg/MoNA-starter-kit.svg?logo=code-climate)](https://codeclimate.com/github/Kandelborg/MoNA-starter-kit/issues)
 
 [![License: MIT](https://img.shields.io/github/license/Kandelborg/MoNA-starter-kit.svg)](https://github.com/Kandelborg/MoNA-starter-kit/blob/master/LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
