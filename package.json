@@ -112,7 +112,7 @@
     "@types/slate-html-serializer": "latest",
     "@types/styled-jsx": "2.2.8",
     "@types/sw-precache-webpack-plugin": "latest",
-    "@types/yup": "0.26.12",
+    "@types/yup": "0.26.22",
     "@types/zeit__next-typescript": "0.1.2",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/eslint-plugin-tslint": "1.6.0",
