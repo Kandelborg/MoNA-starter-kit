@@ -124,7 +124,7 @@
     "babel-eslint": "10.0.2",
     "babel-plugin-module-resolver": "3.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
-    "commitizen": "3.1.2",
+    "commitizen": "4.0.3",
     "commitlint": "7.6.1",
     "copyfiles": "2.1.0",
     "cz-conventional-changelog": "2.1.0",
