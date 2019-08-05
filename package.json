@@ -107,7 +107,7 @@
     "@types/numeral": "latest",
     "@types/react": "16.8.24",
     "@types/react-dom": "16.8.5",
-    "@types/react-jss": "8.6.3",
+    "@types/react-jss": "8.6.4",
     "@types/recompose": "0.30.6",
     "@types/slate-html-serializer": "latest",
     "@types/styled-jsx": "2.2.8",
