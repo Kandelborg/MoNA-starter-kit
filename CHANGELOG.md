@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/Kandelborg/MoNA-starter-kit/compare/v1.2.0...v1.2.1) (2019-08-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next-i18next to ^0.52.0 ([#57](https://github.com/Kandelborg/MoNA-starter-kit/issues/57)) ([891b754](https://github.com/Kandelborg/MoNA-starter-kit/commit/891b754))
+* **package.json:** fix wrong ver for types/node ([ccc8245](https://github.com/Kandelborg/MoNA-starter-kit/commit/ccc8245))
+
 # [1.2.0](https://github.com/MathiasKandelborg/mona-starter-kit/compare/v1.1.2...v1.2.0) (2019-04-03)
 
 

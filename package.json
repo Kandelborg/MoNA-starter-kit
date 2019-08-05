@@ -1,7 +1,7 @@
 {
   "name": "mona",
   "description": "A secure foundation for building excellent I18n, PWA & offline-first applications with MUI, Formik & Apollo in Next.js",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "author": "Mathias Wøbbe",
   "license": "SEE LICENSE IN LICENSE",
   "readme": "README.md",
