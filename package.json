@@ -159,6 +159,6 @@
     "tslint-eslint-rules": "5.4.0",
     "tslint-react": "4.0.0",
     "tslint-react-a11y": "1.0.0",
-    "typescript": "3.4.2"
+    "typescript": "3.5.3"
   }
 }
