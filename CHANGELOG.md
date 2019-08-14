@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/Kandelborg/MoNA-starter-kit/compare/v1.2.1...v1.2.2) (2019-08-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cookie to ^0.4.0 ([#76](https://github.com/Kandelborg/MoNA-starter-kit/issues/76)) ([a06f795](https://github.com/Kandelborg/MoNA-starter-kit/commit/a06f795))
+* **deps:** update dependency react-twemoji to ^0.2.0 ([#77](https://github.com/Kandelborg/MoNA-starter-kit/issues/77)) ([df9b8b6](https://github.com/Kandelborg/MoNA-starter-kit/commit/df9b8b6))
+
 ## [1.2.1](https://github.com/Kandelborg/MoNA-starter-kit/compare/v1.2.0...v1.2.1) (2019-08-05)
 
 
