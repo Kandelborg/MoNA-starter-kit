@@ -127,7 +127,7 @@
     "commitizen": "4.0.3",
     "commitlint": "7.6.1",
     "copyfiles": "2.1.1",
-    "cz-conventional-changelog": "2.1.0",
+    "cz-conventional-changelog": "3.0.2",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.1",
     "eslint-config-prettier": "4.3.0",
