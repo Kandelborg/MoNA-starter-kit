@@ -151,7 +151,7 @@
     "prettier-tslint": "0.4.2",
     "pretty-error": "2.1.1",
     "semantic-release": "15.13.21",
-    "standard": "12.0.1",
+    "standard": "13.1.0",
     "sw-precache-webpack-plugin": "0.11.5",
     "tslint": "5.18.0",
     "tslint-config-airbnb": "5.11.1",
