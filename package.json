@@ -136,7 +136,7 @@
     "eslint-plugin-css-modules": "2.11.0",
     "eslint-plugin-html": "5.0.5",
     "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-markdown": "1.0.0",
     "eslint-plugin-prettier": "3.0.1",
     "eslint-plugin-react": "7.14.3",
