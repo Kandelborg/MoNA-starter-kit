@@ -77,7 +77,7 @@
     "react-jss": "^8.6.1",
     "react-twemoji": "^0.2.0",
     "rm": "^0.3.0",
-    "runtypes": "^3.1.2",
+    "runtypes": "^4.0.0",
     "sitemap": "^2.1.0",
     "styled-jsx": "^3.2.1",
     "yup": "^0.27.0"
