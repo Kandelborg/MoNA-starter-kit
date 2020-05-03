@@ -102,7 +102,7 @@
     "@types/jss": "9.5.8",
     "@types/lodash": "4.14.136",
     "@types/lru-cache": "5.1.0",
-    "@types/next": "8.0.6",
+    "@types/next": "8.0.7",
     "@types/node": "12.7.1",
     "@types/numeral": "latest",
     "@types/react": "16.9.1",
