@@ -106,7 +106,7 @@
     "@types/node": "12.7.1",
     "@types/numeral": "latest",
     "@types/react": "16.9.1",
-    "@types/react-dom": "16.8.5",
+    "@types/react-dom": "16.9.13",
     "@types/react-jss": "8.6.4",
     "@types/recompose": "0.30.7",
     "@types/slate-html-serializer": "latest",
