@@ -98,7 +98,7 @@
     "@semantic-release/release-notes-generator": "7.3.0",
     "@types/classnames": "2.2.9",
     "@types/cookie": "latest",
-    "@types/express": "4.17.0",
+    "@types/express": "4.17.12",
     "@types/jss": "9.5.8",
     "@types/lodash": "4.14.136",
     "@types/lru-cache": "5.1.0",
